@@ -22,7 +22,7 @@ namespace TeduShop.Model.Models
         public string Alias { set; get; }
 
         [Required]
-        public string CategoryID { set; get; }
+        public int CategoryID { set; get; }
 
         [MaxLength(256)]
         public string Image { set; get; }
