@@ -3,7 +3,7 @@ namespace TeduShop.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitiaDB : DbMigration
+    public partial class InitialDB : DbMigration
     {
         public override void Up()
         {
@@ -115,6 +115,13 @@ namespace TeduShop.Data.Migrations
                         DisplayOrder = c.Int(),
                         Image = c.String(maxLength: 256),
                         HomeFlag = c.Boolean(),
+                        CreatedDate = c.DateTime(),
+                        CreatedBy = c.String(maxLength: 256),
+                        UpdatedDate = c.DateTime(),
+                        UpdatedBy = c.String(maxLength: 256),
+                        MetalKeyword = c.String(maxLength: 256),
+                        MetalDescription = c.String(maxLength: 256),
+                        Status = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.ID);
             
@@ -148,6 +155,13 @@ namespace TeduShop.Data.Migrations
                         DisplayOrder = c.Int(),
                         Image = c.String(maxLength: 256),
                         HomeFlag = c.Boolean(),
+                        CreatedDate = c.DateTime(),
+                        CreatedBy = c.String(maxLength: 256),
+                        UpdatedDate = c.DateTime(),
+                        UpdatedBy = c.String(maxLength: 256),
+                        MetalKeyword = c.String(maxLength: 256),
+                        MetalDescription = c.String(maxLength: 256),
+                        Status = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.ID);
             
