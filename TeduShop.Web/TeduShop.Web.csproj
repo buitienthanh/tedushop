@@ -44,16 +44,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Autofac, Version=4.0.1.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <HintPath>..\packages\Autofac.4.0.1\lib\net45\Autofac.dll</HintPath>
+    <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Autofac.Integration.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <HintPath>..\packages\Autofac.Mvc5.4.0.2\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
+    <Reference Include="Autofac.Integration.Mvc, Version=3.3.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.Mvc5.3.3.4\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Autofac.Integration.WebApi, Version=4.1.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <HintPath>..\packages\Autofac.WebApi2.4.1.0\lib\net45\Autofac.Integration.WebApi.dll</HintPath>
+    <Reference Include="Autofac.Integration.WebApi, Version=3.4.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.WebApi2.3.4.0\lib\net45\Autofac.Integration.WebApi.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="AutoMapper, Version=4.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
@@ -112,7 +112,6 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -189,6 +188,7 @@
   <ItemGroup>
     <Compile Include="Api\AccountController.cs" />
     <Compile Include="Api\PostCategoryController.cs" />
+    <Compile Include="Api\ProductCategoryController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -207,6 +207,9 @@
     <Compile Include="Models\PostCategoryViewModel.cs" />
     <Compile Include="Models\PostTagViewModel.cs" />
     <Compile Include="Models\PostViewModel.cs" />
+    <Compile Include="Models\ProductCategoryViewModel.cs" />
+    <Compile Include="Models\ProductTagViewModel.cs" />
+    <Compile Include="Models\ProductViewModel.cs" />
     <Compile Include="Models\TagViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -221,17 +224,13 @@
     <Content Include="app\components\products\productEditView.html" />
     <Content Include="app\components\products\productListController.js" />
     <Content Include="app\components\products\productListView.html" />
-    <Content Include="app\shared\module\tedushop.common.js" />
+    <Content Include="app\components\product_categories\productCategories.module.js" />
+    <Content Include="app\components\product_categories\productCategoryListController.js" />
+    <Content Include="app\components\product_categories\productCategoryListView.html" />
+    <Content Include="app\shared\modules\tedushop.common.js" />
+    <Content Include="app\shared\services\apiService.js" />
     <Content Include="Assets\admin\css\AdminLTE.css" />
     <Content Include="Assets\admin\css\AdminLTE.min.css" />
-    <Content Include="Assets\admin\css\alt\AdminLTE-bootstrap-social.css" />
-    <Content Include="Assets\admin\css\alt\AdminLTE-bootstrap-social.min.css" />
-    <Content Include="Assets\admin\css\alt\AdminLTE-fullcalendar.css" />
-    <Content Include="Assets\admin\css\alt\AdminLTE-fullcalendar.min.css" />
-    <Content Include="Assets\admin\css\alt\AdminLTE-select2.css" />
-    <Content Include="Assets\admin\css\alt\AdminLTE-select2.min.css" />
-    <Content Include="Assets\admin\css\alt\AdminLTE-without-plugins.css" />
-    <Content Include="Assets\admin\css\alt\AdminLTE-without-plugins.min.css" />
     <Content Include="Assets\admin\css\skins\skin-black-light.css" />
     <Content Include="Assets\admin\css\skins\skin-black-light.min.css" />
     <Content Include="Assets\admin\css\skins\skin-black.css" />
@@ -286,11 +285,9 @@
     <Content Include="Assets\admin\img\user6-128x128.jpg" />
     <Content Include="Assets\admin\img\user7-128x128.jpg" />
     <Content Include="Assets\admin\img\user8-128x128.jpg" />
-    <Content Include="Assets\admin\js\adminlte.js" />
-    <Content Include="Assets\admin\js\adminlte.min.js" />
+    <Content Include="Assets\admin\js\app.js" />
+    <Content Include="Assets\admin\js\app.min.js" />
     <Content Include="Assets\admin\js\demo.js" />
-    <Content Include="Assets\admin\js\pages\dashboard.js" />
-    <Content Include="Assets\admin\js\pages\dashboard2.js" />
     <Content Include="Assets\admin\libs\angular-ui-router\release\angular-ui-router.js" />
     <Content Include="Assets\admin\libs\angular-ui-router\release\angular-ui-router.min.js" />
     <Content Include="Assets\admin\libs\angular-ui-router\src\common.js" />
@@ -322,7 +319,6 @@
     <Content Include="Assets\admin\libs\bootstrap\grunt\bs-glyphicons-data-generator.js" />
     <Content Include="Assets\admin\libs\bootstrap\grunt\bs-lessdoc-parser.js" />
     <Content Include="Assets\admin\libs\bootstrap\grunt\bs-raw-files-generator.js" />
-    <Content Include="Assets\admin\libs\bootstrap\grunt\change-version.js" />
     <Content Include="Assets\admin\libs\bootstrap\js\affix.js" />
     <Content Include="Assets\admin\libs\bootstrap\js\alert.js" />
     <Content Include="Assets\admin\libs\bootstrap\js\button.js" />
@@ -337,251 +333,122 @@
     <Content Include="Assets\admin\libs\bootstrap\js\transition.js" />
     <Content Include="Assets\admin\libs\bootstrap\package.js" />
     <Content Include="Assets\admin\libs\fastclick\lib\fastclick.js" />
-    <Content Include="Assets\admin\libs\jQuery\.gitattributes" />
-    <Content Include="Assets\admin\libs\jQuery\.gitignore" />
-    <Content Include="Assets\admin\libs\jQuery\AUTHORS.txt" />
-    <Content Include="Assets\admin\libs\jQuery\build\release.js" />
-    <Content Include="Assets\admin\libs\jQuery\build\release\cdn.js" />
-    <Content Include="Assets\admin\libs\jQuery\build\release\dist.js" />
-    <Content Include="Assets\admin\libs\jQuery\build\release\ensure-sizzle.js" />
-    <Content Include="Assets\admin\libs\jQuery\build\tasks\build.js" />
-    <Content Include="Assets\admin\libs\jQuery\build\tasks\dist.js" />
-    <Content Include="Assets\admin\libs\jQuery\build\tasks\lib\spawn_test.js" />
-    <Content Include="Assets\admin\libs\jQuery\build\tasks\node_smoke_tests.js" />
-    <Content Include="Assets\admin\libs\jQuery\build\tasks\promises_aplus_tests.js" />
-    <Content Include="Assets\admin\libs\jQuery\build\tasks\qunit_fixture.js" />
-    <Content Include="Assets\admin\libs\jQuery\build\tasks\sourcemap.js" />
-    <Content Include="Assets\admin\libs\jQuery\build\tasks\testswarm.js" />
-    <Content Include="Assets\admin\libs\jQuery\dist\jquery.js" />
-    <Content Include="Assets\admin\libs\jQuery\dist\jquery.min.js" />
-    <Content Include="Assets\admin\libs\jQuery\dist\jquery.slim.js" />
-    <Content Include="Assets\admin\libs\jQuery\dist\jquery.slim.min.js" />
-    <Content Include="Assets\admin\libs\jQuery\external\npo\npo.js" />
-    <Content Include="Assets\admin\libs\jQuery\external\qunit-assert-step\MIT-LICENSE.txt" />
-    <Content Include="Assets\admin\libs\jQuery\external\qunit-assert-step\qunit-assert-step.js" />
-    <Content Include="Assets\admin\libs\jQuery\external\qunit\LICENSE.txt" />
-    <Content Include="Assets\admin\libs\jQuery\external\qunit\MIT-LICENSE.txt" />
-    <Content Include="Assets\admin\libs\jQuery\external\qunit\qunit.css" />
-    <Content Include="Assets\admin\libs\jQuery\external\qunit\qunit.js" />
-    <Content Include="Assets\admin\libs\jQuery\external\requirejs\require.js" />
-    <Content Include="Assets\admin\libs\jQuery\external\sinon\LICENSE.txt" />
-    <Content Include="Assets\admin\libs\jQuery\external\sinon\sinon.js" />
-    <Content Include="Assets\admin\libs\jQuery\external\sizzle\dist\sizzle.js" />
-    <Content Include="Assets\admin\libs\jQuery\external\sizzle\dist\sizzle.min.js" />
-    <Content Include="Assets\admin\libs\jQuery\external\sizzle\LICENSE.txt" />
-    <Content Include="Assets\admin\libs\jQuery\Gruntfile.js" />
-    <Content Include="Assets\admin\libs\jQuery\LICENSE.txt" />
-    <Content Include="Assets\admin\libs\jQuery\src\ajax.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\ajax\jsonp.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\ajax\load.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\ajax\parseXML.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\ajax\script.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\ajax\var\location.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\ajax\var\nonce.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\ajax\var\rquery.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\ajax\xhr.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\attributes.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\attributes\attr.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\attributes\classes.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\attributes\prop.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\attributes\support.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\attributes\val.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\callbacks.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\core.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\core\access.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\core\camelCase.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\core\DOMEval.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\core\init.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\core\nodeName.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\core\parseHTML.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\core\ready-no-deferred.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\core\ready.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\core\readyException.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\core\stripAndCollapse.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\core\support.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\core\toType.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\core\var\rsingleTag.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\css.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\css\addGetHookIf.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\css\adjustCSS.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\css\curCSS.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\css\hiddenVisibleSelectors.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\css\showHide.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\css\support.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\css\var\cssExpand.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\css\var\getStyles.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\css\var\isHiddenWithinTree.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\css\var\rboxStyle.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\css\var\rnumnonpx.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\css\var\swap.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\data.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\data\Data.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\data\var\acceptData.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\data\var\dataPriv.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\data\var\dataUser.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\deferred.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\deferred\exceptionHook.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\deprecated.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\dimensions.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\effects.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\effects\animatedSelector.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\effects\Tween.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\event.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\event\ajax.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\event\alias.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\event\focusin.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\event\support.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\event\trigger.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\exports\amd.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\exports\global.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\jquery.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\manipulation.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\manipulation\buildFragment.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\manipulation\getAll.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\manipulation\setGlobalEval.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\manipulation\support.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\manipulation\var\rcheckableType.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\manipulation\var\rscriptType.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\manipulation\var\rtagName.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\manipulation\wrapMap.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\manipulation\_evalUrl.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\offset.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\queue.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\queue\delay.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\selector-native.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\selector-sizzle.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\selector.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\serialize.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\traversing.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\traversing\findFilter.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\traversing\var\dir.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\traversing\var\rneedsContext.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\traversing\var\siblings.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\var\arr.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\var\class2type.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\var\concat.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\var\document.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\var\documentElement.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\var\fnToString.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\var\getProto.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\var\hasOwn.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\var\indexOf.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\var\isFunction.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\var\isWindow.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\var\ObjectFunctionString.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\var\pnum.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\var\push.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\var\rcssNum.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\var\rnothtmlwhite.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\var\slice.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\var\support.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\var\toString.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\wrap.js" />
-    <Content Include="Assets\admin\libs\jQuery\src\wrapper.js" />
-    <Content Include="Assets\admin\libs\jQuery\test\data\1x1.jpg" />
-    <Content Include="Assets\admin\libs\jQuery\test\data\ajax\onunload.html" />
-    <Content Include="Assets\admin\libs\jQuery\test\data\ajax\unreleasedXHR.html" />
-    <Content Include="Assets\admin\libs\jQuery\test\data\badcall.js" />
-    <Content Include="Assets\admin\libs\jQuery\test\data\badjson.js" />
-    <Content Include="Assets\admin\libs\jQuery\test\data\cleanScript.html" />
-    <Content Include="Assets\admin\libs\jQuery\test\data\core\aliased.html" />
-    <Content Include="Assets\admin\libs\jQuery\test\data\core\cc_on.html" />
-    <Content Include="Assets\admin\libs\jQuery\test\data\core\dynamic_ready.html" />
-    <Content Include="Assets\admin\libs\jQuery\test\data\core\onready.html" />
-    <Content Include="Assets\admin\libs\jQuery\test\data\csp.include.html" />
-    <Content Include="Assets\admin\libs\jQuery\test\data\css\cssWidthBeforeDocReady.html" />
-    <Content Include="Assets\admin\libs\jQuery\test\data\css\cssWidthBrowserZoom.html" />
-    <Content Include="Assets\admin\libs\jQuery\test\data\dashboard.xml" />
-    <Content Include="Assets\admin\libs\jQuery\test\data\data\dataAttrs.html" />
-    <Content Include="Assets\admin\libs\jQuery\test\data\dimensions\documentLarge.html" />
-    <Content Include="Assets\admin\libs\jQuery\test\data\event\focusElem.html" />
-    <Content Include="Assets\admin\libs\jQuery\test\data\event\focusinCrossFrame.html" />
-    <Content Include="Assets\admin\libs\jQuery\test\data\event\interactiveReady.html" />
-    <Content Include="Assets\admin\libs\jQuery\test\data\event\onbeforeunload.html" />
-    <Content Include="Assets\admin\libs\jQuery\test\data\event\promiseReady.html" />
-    <Content Include="Assets\admin\libs\jQuery\test\data\event\syncReady.html" />
-    <Content Include="Assets\admin\libs\jQuery\test\data\event\triggerunload.html" />
-    <Content Include="Assets\admin\libs\jQuery\test\data\iframe.html" />
-    <Content Include="Assets\admin\libs\jQuery\test\data\iframeTest.js" />
-    <Content Include="Assets\admin\libs\jQuery\test\data\inner_module.js" />
-    <Content Include="Assets\admin\libs\jQuery\test\data\jquery-1.9.1.js" />
-    <Content Include="Assets\admin\libs\jQuery\test\data\json_obj.js" />
-    <Content Include="Assets\admin\libs\jQuery\test\data\manipulation\iframe-denied.html" />
-    <Content Include="Assets\admin\libs\jQuery\test\data\manipulation\scripts-context.html" />
-    <Content Include="Assets\admin\libs\jQuery\test\data\module.js" />
-    <Content Include="Assets\admin\libs\jQuery\test\data\name.html" />
-    <Content Include="Assets\admin\libs\jQuery\test\data\offset\absolute.html" />
-    <Content Include="Assets\admin\libs\jQuery\test\data\offset\body.html" />
-    <Content Include="Assets\admin\libs\jQuery\test\data\offset\boxes.html" />
-    <Content Include="Assets\admin\libs\jQuery\test\data\offset\fixed.html" />
-    <Content Include="Assets\admin\libs\jQuery\test\data\offset\relative.html" />
-    <Content Include="Assets\admin\libs\jQuery\test\data\offset\scroll.html" />
-    <Content Include="Assets\admin\libs\jQuery\test\data\offset\static.html" />
-    <Content Include="Assets\admin\libs\jQuery\test\data\offset\table.html" />
-    <Content Include="Assets\admin\libs\jQuery\test\data\qunit-fixture.html" />
-    <Content Include="Assets\admin\libs\jQuery\test\data\qunit-fixture.js" />
-    <Content Include="Assets\admin\libs\jQuery\test\data\readywait.html" />
-    <Content Include="Assets\admin\libs\jQuery\test\data\selector\html5_selector.html" />
-    <Content Include="Assets\admin\libs\jQuery\test\data\selector\sizzle_cache.html" />
-    <Content Include="Assets\admin\libs\jQuery\test\data\support\bodyBackground.html" />
-    <Content Include="Assets\admin\libs\jQuery\test\data\support\csp.js" />
-    <Content Include="Assets\admin\libs\jQuery\test\data\support\getComputedSupport.js" />
-    <Content Include="Assets\admin\libs\jQuery\test\data\test.include.html" />
-    <Content Include="Assets\admin\libs\jQuery\test\data\test2.html" />
-    <Content Include="Assets\admin\libs\jQuery\test\data\test3.html" />
-    <Content Include="Assets\admin\libs\jQuery\test\data\testinit.js" />
-    <Content Include="Assets\admin\libs\jQuery\test\data\testrunner.js" />
-    <Content Include="Assets\admin\libs\jQuery\test\data\testsuite.css" />
-    <Content Include="Assets\admin\libs\jQuery\test\data\text.txt" />
-    <Content Include="Assets\admin\libs\jQuery\test\data\with_fries.xml" />
-    <Content Include="Assets\admin\libs\jQuery\test\delegatetest.html" />
-    <Content Include="Assets\admin\libs\jQuery\test\hovertest.html" />
-    <Content Include="Assets\admin\libs\jQuery\test\index.html" />
-    <Content Include="Assets\admin\libs\jQuery\test\integration\data\gh-1764-fullscreen-iframe.css" />
-    <Content Include="Assets\admin\libs\jQuery\test\integration\data\gh-1764-fullscreen-iframe.html" />
-    <Content Include="Assets\admin\libs\jQuery\test\integration\data\gh-1764-fullscreen.js" />
-    <Content Include="Assets\admin\libs\jQuery\test\integration\gh-1764-fullscreen.html" />
-    <Content Include="Assets\admin\libs\jQuery\test\integration\gh-2343-ie-radio-click.html" />
-    <Content Include="Assets\admin\libs\jQuery\test\jquery.js" />
-    <Content Include="Assets\admin\libs\jQuery\test\karma.context.html" />
-    <Content Include="Assets\admin\libs\jQuery\test\karma.debug.html" />
-    <Content Include="Assets\admin\libs\jQuery\test\localfile.html" />
-    <Content Include="Assets\admin\libs\jQuery\test\middleware-mockserver.js" />
-    <Content Include="Assets\admin\libs\jQuery\test\networkerror.html" />
-    <Content Include="Assets\admin\libs\jQuery\test\node_smoke_tests\document_missing.js" />
-    <Content Include="Assets\admin\libs\jQuery\test\node_smoke_tests\document_passed.js" />
-    <Content Include="Assets\admin\libs\jQuery\test\node_smoke_tests\document_present_originally.js" />
-    <Content Include="Assets\admin\libs\jQuery\test\node_smoke_tests\iterable_with_native_symbol.js" />
-    <Content Include="Assets\admin\libs\jQuery\test\node_smoke_tests\iterable_with_symbol_polyfill.js" />
-    <Content Include="Assets\admin\libs\jQuery\test\node_smoke_tests\lib\ensure_global_not_created.js" />
-    <Content Include="Assets\admin\libs\jQuery\test\node_smoke_tests\lib\ensure_iterability_es6.js" />
-    <Content Include="Assets\admin\libs\jQuery\test\node_smoke_tests\lib\ensure_jquery.js" />
-    <Content Include="Assets\admin\libs\jQuery\test\promises_aplus_adapters\deferred.js" />
-    <Content Include="Assets\admin\libs\jQuery\test\promises_aplus_adapters\when.js" />
-    <Content Include="Assets\admin\libs\jQuery\test\unit\ajax.js" />
-    <Content Include="Assets\admin\libs\jQuery\test\unit\animation.js" />
-    <Content Include="Assets\admin\libs\jQuery\test\unit\attributes.js" />
-    <Content Include="Assets\admin\libs\jQuery\test\unit\basic.js" />
-    <Content Include="Assets\admin\libs\jQuery\test\unit\callbacks.js" />
-    <Content Include="Assets\admin\libs\jQuery\test\unit\core.js" />
-    <Content Include="Assets\admin\libs\jQuery\test\unit\css.js" />
-    <Content Include="Assets\admin\libs\jQuery\test\unit\data.js" />
-    <Content Include="Assets\admin\libs\jQuery\test\unit\deferred.js" />
-    <Content Include="Assets\admin\libs\jQuery\test\unit\deprecated.js" />
-    <Content Include="Assets\admin\libs\jQuery\test\unit\dimensions.js" />
-    <Content Include="Assets\admin\libs\jQuery\test\unit\effects.js" />
-    <Content Include="Assets\admin\libs\jQuery\test\unit\event.js" />
-    <Content Include="Assets\admin\libs\jQuery\test\unit\exports.js" />
-    <Content Include="Assets\admin\libs\jQuery\test\unit\manipulation.js" />
-    <Content Include="Assets\admin\libs\jQuery\test\unit\offset.js" />
-    <Content Include="Assets\admin\libs\jQuery\test\unit\queue.js" />
-    <Content Include="Assets\admin\libs\jQuery\test\unit\ready.js" />
-    <Content Include="Assets\admin\libs\jQuery\test\unit\selector.js" />
-    <Content Include="Assets\admin\libs\jQuery\test\unit\serialize.js" />
-    <Content Include="Assets\admin\libs\jQuery\test\unit\support.js" />
-    <Content Include="Assets\admin\libs\jQuery\test\unit\traversing.js" />
-    <Content Include="Assets\admin\libs\jQuery\test\unit\tween.js" />
-    <Content Include="Assets\admin\libs\jQuery\test\unit\wrap.js" />
+    <Content Include="Assets\admin\libs\jquery\AUTHORS.txt" />
+    <Content Include="Assets\admin\libs\jquery\dist\jquery.js" />
+    <Content Include="Assets\admin\libs\jquery\dist\jquery.min.js" />
+    <Content Include="Assets\admin\libs\jquery\dist\jquery.slim.js" />
+    <Content Include="Assets\admin\libs\jquery\dist\jquery.slim.min.js" />
+    <Content Include="Assets\admin\libs\jquery\LICENSE.txt" />
+    <Content Include="Assets\admin\libs\jquery\sizzle\dist\sizzle.js" />
+    <Content Include="Assets\admin\libs\jquery\sizzle\dist\sizzle.min.js" />
+    <Content Include="Assets\admin\libs\jquery\sizzle\LICENSE.txt" />
+    <Content Include="Assets\admin\libs\jquery\src\ajax.js" />
+    <Content Include="Assets\admin\libs\jquery\src\ajax\jsonp.js" />
+    <Content Include="Assets\admin\libs\jquery\src\ajax\load.js" />
+    <Content Include="Assets\admin\libs\jquery\src\ajax\parseJSON.js" />
+    <Content Include="Assets\admin\libs\jquery\src\ajax\parseXML.js" />
+    <Content Include="Assets\admin\libs\jquery\src\ajax\script.js" />
+    <Content Include="Assets\admin\libs\jquery\src\ajax\var\location.js" />
+    <Content Include="Assets\admin\libs\jquery\src\ajax\var\nonce.js" />
+    <Content Include="Assets\admin\libs\jquery\src\ajax\var\rquery.js" />
+    <Content Include="Assets\admin\libs\jquery\src\ajax\xhr.js" />
+    <Content Include="Assets\admin\libs\jquery\src\attributes.js" />
+    <Content Include="Assets\admin\libs\jquery\src\attributes\attr.js" />
+    <Content Include="Assets\admin\libs\jquery\src\attributes\classes.js" />
+    <Content Include="Assets\admin\libs\jquery\src\attributes\prop.js" />
+    <Content Include="Assets\admin\libs\jquery\src\attributes\support.js" />
+    <Content Include="Assets\admin\libs\jquery\src\attributes\val.js" />
+    <Content Include="Assets\admin\libs\jquery\src\callbacks.js" />
+    <Content Include="Assets\admin\libs\jquery\src\core.js" />
+    <Content Include="Assets\admin\libs\jquery\src\core\access.js" />
+    <Content Include="Assets\admin\libs\jquery\src\core\DOMEval.js" />
+    <Content Include="Assets\admin\libs\jquery\src\core\init.js" />
+    <Content Include="Assets\admin\libs\jquery\src\core\parseHTML.js" />
+    <Content Include="Assets\admin\libs\jquery\src\core\ready.js" />
+    <Content Include="Assets\admin\libs\jquery\src\core\support.js" />
+    <Content Include="Assets\admin\libs\jquery\src\core\var\rsingleTag.js" />
+    <Content Include="Assets\admin\libs\jquery\src\css.js" />
+    <Content Include="Assets\admin\libs\jquery\src\css\addGetHookIf.js" />
+    <Content Include="Assets\admin\libs\jquery\src\css\adjustCSS.js" />
+    <Content Include="Assets\admin\libs\jquery\src\css\curCSS.js" />
+    <Content Include="Assets\admin\libs\jquery\src\css\defaultDisplay.js" />
+    <Content Include="Assets\admin\libs\jquery\src\css\hiddenVisibleSelectors.js" />
+    <Content Include="Assets\admin\libs\jquery\src\css\showHide.js" />
+    <Content Include="Assets\admin\libs\jquery\src\css\support.js" />
+    <Content Include="Assets\admin\libs\jquery\src\css\var\cssExpand.js" />
+    <Content Include="Assets\admin\libs\jquery\src\css\var\getStyles.js" />
+    <Content Include="Assets\admin\libs\jquery\src\css\var\isHidden.js" />
+    <Content Include="Assets\admin\libs\jquery\src\css\var\rmargin.js" />
+    <Content Include="Assets\admin\libs\jquery\src\css\var\rnumnonpx.js" />
+    <Content Include="Assets\admin\libs\jquery\src\css\var\swap.js" />
+    <Content Include="Assets\admin\libs\jquery\src\data.js" />
+    <Content Include="Assets\admin\libs\jquery\src\data\accepts.js" />
+    <Content Include="Assets\admin\libs\jquery\src\data\Data.js" />
+    <Content Include="Assets\admin\libs\jquery\src\data\support.js" />
+    <Content Include="Assets\admin\libs\jquery\src\data\var\acceptData.js" />
+    <Content Include="Assets\admin\libs\jquery\src\data\var\dataPriv.js" />
+    <Content Include="Assets\admin\libs\jquery\src\data\var\dataUser.js" />
+    <Content Include="Assets\admin\libs\jquery\src\deferred.js" />
+    <Content Include="Assets\admin\libs\jquery\src\deferred\exceptionHook.js" />
+    <Content Include="Assets\admin\libs\jquery\src\deprecated.js" />
+    <Content Include="Assets\admin\libs\jquery\src\dimensions.js" />
+    <Content Include="Assets\admin\libs\jquery\src\effects.js" />
+    <Content Include="Assets\admin\libs\jquery\src\effects\animatedSelector.js" />
+    <Content Include="Assets\admin\libs\jquery\src\effects\support.js" />
+    <Content Include="Assets\admin\libs\jquery\src\effects\Tween.js" />
+    <Content Include="Assets\admin\libs\jquery\src\event.js" />
+    <Content Include="Assets\admin\libs\jquery\src\event\ajax.js" />
+    <Content Include="Assets\admin\libs\jquery\src\event\alias.js" />
+    <Content Include="Assets\admin\libs\jquery\src\event\focusin.js" />
+    <Content Include="Assets\admin\libs\jquery\src\event\support.js" />
+    <Content Include="Assets\admin\libs\jquery\src\event\trigger.js" />
+    <Content Include="Assets\admin\libs\jquery\src\exports\amd.js" />
+    <Content Include="Assets\admin\libs\jquery\src\exports\global.js" />
+    <Content Include="Assets\admin\libs\jquery\src\intro.js" />
+    <Content Include="Assets\admin\libs\jquery\src\jquery.js" />
+    <Content Include="Assets\admin\libs\jquery\src\manipulation.js" />
+    <Content Include="Assets\admin\libs\jquery\src\manipulation\buildFragment.js" />
+    <Content Include="Assets\admin\libs\jquery\src\manipulation\createSafeFragment.js" />
+    <Content Include="Assets\admin\libs\jquery\src\manipulation\getAll.js" />
+    <Content Include="Assets\admin\libs\jquery\src\manipulation\setGlobalEval.js" />
+    <Content Include="Assets\admin\libs\jquery\src\manipulation\support.js" />
+    <Content Include="Assets\admin\libs\jquery\src\manipulation\var\nodeNames.js" />
+    <Content Include="Assets\admin\libs\jquery\src\manipulation\var\rcheckableType.js" />
+    <Content Include="Assets\admin\libs\jquery\src\manipulation\var\rleadingWhitespace.js" />
+    <Content Include="Assets\admin\libs\jquery\src\manipulation\var\rscriptType.js" />
+    <Content Include="Assets\admin\libs\jquery\src\manipulation\var\rtagName.js" />
+    <Content Include="Assets\admin\libs\jquery\src\manipulation\wrapMap.js" />
+    <Content Include="Assets\admin\libs\jquery\src\manipulation\_evalUrl.js" />
+    <Content Include="Assets\admin\libs\jquery\src\offset.js" />
+    <Content Include="Assets\admin\libs\jquery\src\outro.js" />
+    <Content Include="Assets\admin\libs\jquery\src\queue.js" />
+    <Content Include="Assets\admin\libs\jquery\src\queue\delay.js" />
+    <Content Include="Assets\admin\libs\jquery\src\selector-native.js" />
+    <Content Include="Assets\admin\libs\jquery\src\selector-sizzle.js" />
+    <Content Include="Assets\admin\libs\jquery\src\selector.js" />
+    <Content Include="Assets\admin\libs\jquery\src\serialize.js" />
+    <Content Include="Assets\admin\libs\jquery\src\support.js" />
+    <Content Include="Assets\admin\libs\jquery\src\traversing.js" />
+    <Content Include="Assets\admin\libs\jquery\src\traversing\findFilter.js" />
+    <Content Include="Assets\admin\libs\jquery\src\traversing\var\dir.js" />
+    <Content Include="Assets\admin\libs\jquery\src\traversing\var\rneedsContext.js" />
+    <Content Include="Assets\admin\libs\jquery\src\traversing\var\siblings.js" />
+    <Content Include="Assets\admin\libs\jquery\src\var\arr.js" />
+    <Content Include="Assets\admin\libs\jquery\src\var\class2type.js" />
+    <Content Include="Assets\admin\libs\jquery\src\var\concat.js" />
+    <Content Include="Assets\admin\libs\jquery\src\var\deletedIds.js" />
+    <Content Include="Assets\admin\libs\jquery\src\var\document.js" />
+    <Content Include="Assets\admin\libs\jquery\src\var\documentElement.js" />
+    <Content Include="Assets\admin\libs\jquery\src\var\hasOwn.js" />
+    <Content Include="Assets\admin\libs\jquery\src\var\indexOf.js" />
+    <Content Include="Assets\admin\libs\jquery\src\var\pnum.js" />
+    <Content Include="Assets\admin\libs\jquery\src\var\push.js" />
+    <Content Include="Assets\admin\libs\jquery\src\var\rcssNum.js" />
+    <Content Include="Assets\admin\libs\jquery\src\var\rnotwhite.js" />
+    <Content Include="Assets\admin\libs\jquery\src\var\slice.js" />
+    <Content Include="Assets\admin\libs\jquery\src\var\support.js" />
+    <Content Include="Assets\admin\libs\jquery\src\var\toString.js" />
+    <Content Include="Assets\admin\libs\jquery\src\wrap.js" />
     <Content Include="Assets\admin\libs\slimScroll\examples\allow-page-scroll.html" />
     <Content Include="Assets\admin\libs\slimScroll\examples\chaining.html" />
     <Content Include="Assets\admin\libs\slimScroll\examples\disable-fade-out.html" />
@@ -604,6 +471,7 @@
     <Content Include="Assets\admin\libs\slimScroll\jquery.slimscroll.min.js" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Resources\db.sql" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -615,88 +483,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\components\orders\" />
-    <Folder Include="app\components\product_categories\" />
     <Folder Include="app\components\roles\" />
     <Folder Include="app\components\users\" />
     <Folder Include="app\shared\footer\" />
     <Folder Include="app\shared\navigation\" />
-    <Folder Include="app\shared\services\" />
-    <Folder Include="Assets\admin\libs\bootstrap\.github\" />
-    <Folder Include="Assets\admin\libs\bootstrap\assets\brand\" />
-    <Folder Include="Assets\admin\libs\bootstrap\assets\css\" />
-    <Folder Include="Assets\admin\libs\bootstrap\assets\img\favicons\" />
-    <Folder Include="Assets\admin\libs\bootstrap\assets\js\src\" />
-    <Folder Include="Assets\admin\libs\bootstrap\assets\js\vendor\" />
-    <Folder Include="Assets\admin\libs\bootstrap\assets\scss\" />
-    <Folder Include="Assets\admin\libs\bootstrap\build\" />
-    <Folder Include="Assets\admin\libs\bootstrap\docs\4.0\about\" />
-    <Folder Include="Assets\admin\libs\bootstrap\docs\4.0\components\" />
-    <Folder Include="Assets\admin\libs\bootstrap\docs\4.0\content\" />
-    <Folder Include="Assets\admin\libs\bootstrap\docs\4.0\examples\album\" />
-    <Folder Include="Assets\admin\libs\bootstrap\docs\4.0\examples\blog\" />
-    <Folder Include="Assets\admin\libs\bootstrap\docs\4.0\examples\carousel\" />
-    <Folder Include="Assets\admin\libs\bootstrap\docs\4.0\examples\checkout\" />
-    <Folder Include="Assets\admin\libs\bootstrap\docs\4.0\examples\cover\" />
-    <Folder Include="Assets\admin\libs\bootstrap\docs\4.0\examples\dashboard\" />
-    <Folder Include="Assets\admin\libs\bootstrap\docs\4.0\examples\floating-labels\" />
-    <Folder Include="Assets\admin\libs\bootstrap\docs\4.0\examples\grid\" />
-    <Folder Include="Assets\admin\libs\bootstrap\docs\4.0\examples\jumbotron\" />
-    <Folder Include="Assets\admin\libs\bootstrap\docs\4.0\examples\navbar-bottom\" />
-    <Folder Include="Assets\admin\libs\bootstrap\docs\4.0\examples\navbar-fixed\" />
-    <Folder Include="Assets\admin\libs\bootstrap\docs\4.0\examples\navbar-static\" />
-    <Folder Include="Assets\admin\libs\bootstrap\docs\4.0\examples\navbars\" />
-    <Folder Include="Assets\admin\libs\bootstrap\docs\4.0\examples\offcanvas\" />
-    <Folder Include="Assets\admin\libs\bootstrap\docs\4.0\examples\pricing\" />
-    <Folder Include="Assets\admin\libs\bootstrap\docs\4.0\examples\product\" />
-    <Folder Include="Assets\admin\libs\bootstrap\docs\4.0\examples\screenshots\" />
-    <Folder Include="Assets\admin\libs\bootstrap\docs\4.0\examples\sign-in\" />
-    <Folder Include="Assets\admin\libs\bootstrap\docs\4.0\examples\starter-template\" />
-    <Folder Include="Assets\admin\libs\bootstrap\docs\4.0\examples\sticky-footer-navbar\" />
-    <Folder Include="Assets\admin\libs\bootstrap\docs\4.0\examples\sticky-footer\" />
-    <Folder Include="Assets\admin\libs\bootstrap\docs\4.0\examples\tooltip-viewport\" />
-    <Folder Include="Assets\admin\libs\bootstrap\docs\4.0\extend\" />
-    <Folder Include="Assets\admin\libs\bootstrap\docs\4.0\getting-started\" />
-    <Folder Include="Assets\admin\libs\bootstrap\docs\4.0\layout\" />
-    <Folder Include="Assets\admin\libs\bootstrap\docs\4.0\utilities\" />
-    <Folder Include="Assets\admin\libs\bootstrap\js\dist\" />
-    <Folder Include="Assets\admin\libs\bootstrap\js\src\" />
-    <Folder Include="Assets\admin\libs\bootstrap\js\tests\unit\" />
-    <Folder Include="Assets\admin\libs\bootstrap\js\tests\vendor\" />
-    <Folder Include="Assets\admin\libs\bootstrap\js\tests\visual\" />
-    <Folder Include="Assets\admin\libs\bootstrap\scss\mixins\" />
-    <Folder Include="Assets\admin\libs\bootstrap\scss\utilities\" />
-    <Folder Include="Assets\admin\libs\bootstrap\_data\" />
-    <Folder Include="Assets\admin\libs\bootstrap\_includes\icons\" />
-    <Folder Include="Assets\admin\libs\bootstrap\_layouts\" />
-    <Folder Include="Assets\admin\libs\bootstrap\_plugins\" />
-    <Folder Include="Assets\admin\libs\fontAwesome\.github\ISSUE_TEMPLATE\" />
-    <Folder Include="Assets\admin\libs\fontAwesome\advanced-options\metadata\" />
-    <Folder Include="Assets\admin\libs\fontAwesome\advanced-options\raw-svg\brands\" />
-    <Folder Include="Assets\admin\libs\fontAwesome\advanced-options\raw-svg\regular\" />
-    <Folder Include="Assets\admin\libs\fontAwesome\advanced-options\raw-svg\solid\" />
-    <Folder Include="Assets\admin\libs\fontAwesome\advanced-options\svg-sprites\" />
-    <Folder Include="Assets\admin\libs\fontAwesome\advanced-options\use-with-node-js\fontawesome-common-types\" />
-    <Folder Include="Assets\admin\libs\fontAwesome\advanced-options\use-with-node-js\fontawesome-free-brands\" />
-    <Folder Include="Assets\admin\libs\fontAwesome\advanced-options\use-with-node-js\fontawesome-free-regular\" />
-    <Folder Include="Assets\admin\libs\fontAwesome\advanced-options\use-with-node-js\fontawesome-free-solid\" />
-    <Folder Include="Assets\admin\libs\fontAwesome\advanced-options\use-with-node-js\fontawesome-free-webfonts\css\" />
-    <Folder Include="Assets\admin\libs\fontAwesome\advanced-options\use-with-node-js\fontawesome-free-webfonts\less\" />
-    <Folder Include="Assets\admin\libs\fontAwesome\advanced-options\use-with-node-js\fontawesome-free-webfonts\scss\" />
-    <Folder Include="Assets\admin\libs\fontAwesome\advanced-options\use-with-node-js\fontawesome-free-webfonts\webfonts\" />
-    <Folder Include="Assets\admin\libs\fontAwesome\advanced-options\use-with-node-js\fontawesome\" />
-    <Folder Include="Assets\admin\libs\fontAwesome\svg-with-js\css\" />
-    <Folder Include="Assets\admin\libs\fontAwesome\svg-with-js\js\" />
-    <Folder Include="Assets\admin\libs\fontAwesome\use-on-desktop\" />
-    <Folder Include="Assets\admin\libs\fontAwesome\web-fonts-with-css\css\" />
-    <Folder Include="Assets\admin\libs\fontAwesome\web-fonts-with-css\less\" />
-    <Folder Include="Assets\admin\libs\fontAwesome\web-fonts-with-css\scss\" />
-    <Folder Include="Assets\admin\libs\fontAwesome\web-fonts-with-css\webfonts\" />
-    <Folder Include="Assets\admin\libs\ionicons\css\" />
-    <Folder Include="Assets\admin\libs\ionicons\fonts\" />
-    <Folder Include="Assets\admin\libs\ionicons\less\" />
-    <Folder Include="Assets\admin\libs\ionicons\png\512\" />
-    <Folder Include="Assets\admin\libs\ionicons\scss\" />
-    <Folder Include="Assets\admin\libs\ionicons\src\" />
+    <Folder Include="Assets\admin\js\pages\" />
     <Folder Include="Assets\client\" />
   </ItemGroup>
   <ItemGroup>
@@ -707,34 +498,30 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TeduShop.Common\TeduShop.Common.csproj">
-      <Project>{0e5e13e4-6964-4f6c-8448-0ca3bc6de5d4}</Project>
+      <Project>{300cc7f5-31a6-44b7-8d90-f354ac34b936}</Project>
       <Name>TeduShop.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\TeduShop.Data\TeduShop.Data.csproj">
-      <Project>{34edeabe-b5c9-46d3-b5ef-21821c1a562b}</Project>
+      <Project>{d573cfed-f642-4868-b921-4226cb26cdfe}</Project>
       <Name>TeduShop.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\TeduShop.Model\TeduShop.Model.csproj">
-      <Project>{974ad3fd-4951-4035-8ea0-82dbf855ff3e}</Project>
+      <Project>{1a60e027-7b3b-4881-9ec3-2666b297cb43}</Project>
       <Name>TeduShop.Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\TeduShop.Service\TeduShop.Service.csproj">
-      <Project>{6f946f51-c38b-464f-9c78-fc401745aade}</Project>
+      <Project>{7eb49ce5-4c7a-46d0-b381-eb19a5f8dfaa}</Project>
       <Name>TeduShop.Service</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".bowerrc" />
+    <Content Include="bower.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Admin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bower.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include=".bowerrc" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Assets\admin\css\adminlte.css.map" />
-    <Content Include="Assets\admin\css\adminlte.min.css.map" />
     <Content Include="Assets\admin\libs\angular-ui-router\.bower.json" />
     <Content Include="Assets\admin\libs\angular-ui-router\bower.json" />
     <Content Include="Assets\admin\libs\angular-ui-router\CHANGELOG.md" />
@@ -745,9 +532,10 @@
     <Content Include="Assets\admin\libs\angular\angular.min.js.gzip" />
     <Content Include="Assets\admin\libs\angular\angular.min.js.map" />
     <Content Include="Assets\admin\libs\angular\bower.json" />
-    <Content Include="Assets\admin\libs\angular\LICENSE.md" />
     <Content Include="Assets\admin\libs\angular\package.json" />
     <Content Include="Assets\admin\libs\angular\README.md" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Assets\admin\libs\bootstrap\.bower.json" />
     <Content Include="Assets\admin\libs\bootstrap\bower.json" />
     <Content Include="Assets\admin\libs\bootstrap\CHANGELOG.md" />
@@ -763,13 +551,9 @@
     <Content Include="Assets\admin\libs\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Assets\admin\libs\bootstrap\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Assets\admin\libs\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="Assets\admin\libs\bootstrap\Gemfile" />
-    <Content Include="Assets\admin\libs\bootstrap\Gemfile.lock" />
     <Content Include="Assets\admin\libs\bootstrap\grunt\.jshintrc" />
     <Content Include="Assets\admin\libs\bootstrap\grunt\configBridge.json" />
-    <Content Include="Assets\admin\libs\bootstrap\grunt\npm-shrinkwrap.json" />
     <Content Include="Assets\admin\libs\bootstrap\grunt\sauce_browsers.yml" />
-    <Content Include="Assets\admin\libs\bootstrap\ISSUE_TEMPLATE.md" />
     <Content Include="Assets\admin\libs\bootstrap\js\.jscsrc" />
     <Content Include="Assets\admin\libs\bootstrap\js\.jshintrc" />
     <Content Include="Assets\admin\libs\bootstrap\less\.csscomb.json" />
@@ -851,41 +635,27 @@
     <Content Include="Assets\admin\libs\bootstrap\nuget\MyGet.ps1" />
     <Content Include="Assets\admin\libs\bootstrap\package.json" />
     <Content Include="Assets\admin\libs\bootstrap\README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\admin\libs\jquery\.bower.json" />
+    <Content Include="Assets\admin\libs\jquery\bower.json" />
+    <Content Include="Assets\admin\libs\jquery\dist\jquery.min.map" />
+    <Content Include="Assets\admin\libs\jquery\dist\jquery.slim.min.map" />
+    <Content Include="Assets\admin\libs\jquery\README.md" />
+    <Content Include="Assets\admin\libs\jquery\sizzle\dist\sizzle.min.map" />
+    <Content Include="Assets\admin\libs\jquery\src\.jshintrc" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Assets\admin\libs\fastclick\.bower.json" />
     <Content Include="Assets\admin\libs\fastclick\bower.json" />
     <Content Include="Assets\admin\libs\fastclick\LICENSE" />
     <Content Include="Assets\admin\libs\fastclick\README.md" />
-    <Content Include="Assets\admin\libs\jQuery\.bower.json" />
-    <Content Include="Assets\admin\libs\jQuery\.editorconfig" />
-    <Content Include="Assets\admin\libs\jQuery\.eslintignore" />
-    <Content Include="Assets\admin\libs\jQuery\.eslintrc-browser.json" />
-    <Content Include="Assets\admin\libs\jQuery\.eslintrc-node.json" />
-    <Content Include="Assets\admin\libs\jQuery\.eslintrc.json" />
-    <Content Include="Assets\admin\libs\jQuery\.github\ISSUE_TEMPLATE.md" />
-    <Content Include="Assets\admin\libs\jQuery\.github\PULL_REQUEST_TEMPLATE.md" />
-    <Content Include="Assets\admin\libs\jQuery\.mailmap" />
-    <Content Include="Assets\admin\libs\jQuery\.npmignore" />
-    <Content Include="Assets\admin\libs\jQuery\.npmrc" />
-    <Content Include="Assets\admin\libs\jQuery\.travis.yml" />
-    <Content Include="Assets\admin\libs\jQuery\CODE_OF_CONDUCT.md" />
-    <Content Include="Assets\admin\libs\jQuery\CONTRIBUTING.md" />
-    <Content Include="Assets\admin\libs\jQuery\dist\.eslintrc.json" />
-    <Content Include="Assets\admin\libs\jQuery\dist\jquery.min.map" />
-    <Content Include="Assets\admin\libs\jQuery\dist\jquery.slim.min.map" />
-    <Content Include="Assets\admin\libs\jQuery\external\sizzle\dist\sizzle.min.map" />
-    <Content Include="Assets\admin\libs\jQuery\package.json" />
-    <Content Include="Assets\admin\libs\jQuery\README.md" />
-    <Content Include="Assets\admin\libs\jQuery\src\.eslintrc.json" />
-    <Content Include="Assets\admin\libs\jQuery\test\.eslintrc.json" />
-    <Content Include="Assets\admin\libs\jQuery\test\data\mock.php" />
-    <Content Include="Assets\admin\libs\jQuery\test\data\support\csp.log" />
-    <Content Include="Assets\admin\libs\jQuery\test\node_smoke_tests\.eslintrc.json" />
-    <Content Include="Assets\admin\libs\jQuery\test\promises_aplus_adapters\.eslintrc.json" />
-    <Content Include="Assets\admin\libs\jQuery\test\xhtml.php" />
     <Content Include="Assets\admin\libs\slimScroll\.bower.json" />
-    <Content Include="Assets\admin\libs\slimScroll\bower.json" />
     <Content Include="Assets\admin\libs\slimScroll\package.json" />
     <Content Include="Assets\admin\libs\slimScroll\README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\AdminLTE-2.3.0.zip" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -903,9 +673,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>52963</DevelopmentServerPort>
+          <DevelopmentServerPort>55429</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:52963/</IISUrl>
+          <IISUrl>http://localhost:55429/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

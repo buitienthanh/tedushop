@@ -13,6 +13,7 @@ namespace TeduShop.Web.Api
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+
         public AccountController()
         {
         }
@@ -47,24 +48,21 @@ namespace TeduShop.Web.Api
             }
         }
 
-        // POST: /Account/Login
         [HttpPost]
         [AllowAnonymous]
         [Route("login")]
-        public async Task<HttpResponseMessage> Login(HttpRequestMessage request, string userName,string passWord,bool rememberMe)
+        public async Task<HttpResponseMessage> Login(HttpRequestMessage request, string userName, string password, bool rememberMe)
         {
             if (!ModelState.IsValid)
             {
-                return request.CreateErrorResponse(HttpStatusCode.BadRequest,ModelState);
+                return request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
             }
-
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(userName, passWord, rememberMe, shouldLockout: false);
-            return request.CreateResponse(HttpStatusCode.OK,result);
-              
-            }
+            var result = await SignInManager.PasswordSignInAsync(userName, password, rememberMe, shouldLockout: false);
+            return request.CreateResponse(HttpStatusCode.OK, result);
         }
 
-    }
 
+    }
+}

@@ -28,9 +28,10 @@ namespace TeduShop.Web.Api
             return CreateHttpResponse(request, () =>
             {
                 var listCategory = _postCategoryService.GetAll();
-                var listPostCategoryVm = Mapper.Map<List<PostCategoryViewModel>>(listCategory);
-                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listPostCategoryVm);
 
+                var listPostCategoryVm = Mapper.Map<List<PostCategoryViewModel>>(listCategory);
+
+                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listPostCategoryVm);
 
                 return response;
             });
@@ -50,6 +51,7 @@ namespace TeduShop.Web.Api
                 {
                     PostCategory newPostCategory = new PostCategory();
                     newPostCategory.UpdatePostCategory(postCategoryVm);
+
                     var category = _postCategoryService.Add(newPostCategory);
                     _postCategoryService.Save();
 

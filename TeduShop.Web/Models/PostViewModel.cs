@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace TeduShop.Web.Models
 {
     public class PostViewModel
     {
-      
         public int ID { set; get; }
 
         public string Name { set; get; }
@@ -31,15 +28,18 @@ namespace TeduShop.Web.Models
         public DateTime? CreatedDate { set; get; }
 
         public string CreatedBy { set; get; }
+
         public DateTime? UpdatedDate { set; get; }
 
         public string UpdatedBy { set; get; }
 
-        public string MetalKeyword { set; get; }
+        public string MetaKeyword { set; get; }
 
-        public string MetalDescription { set; get; }
+        public string MetaDescription { set; get; }
+
         public bool Status { set; get; }
-        public virtual IEnumerable<PostCategoryViewModel> PostCategory { set; get; }
+
+        public virtual PostCategoryViewModel PostCategory { set; get; }
 
         public virtual IEnumerable<PostTagViewModel> PostTags { set; get; }
     }

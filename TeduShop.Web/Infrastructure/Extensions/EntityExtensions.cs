@@ -24,8 +24,8 @@ namespace TeduShop.Web.Infrastructure.Extensions
             postCategory.CreatedBy = postCategoryVm.CreatedBy;
             postCategory.UpdatedDate = postCategoryVm.UpdatedDate;
             postCategory.UpdatedBy = postCategoryVm.UpdatedBy;
-            postCategory.MetalKeyword = postCategoryVm.MetalKeyword;
-            postCategory.MetalDescription = postCategoryVm.MetalDescription;
+            postCategory.MetalKeyword = postCategoryVm.MetaKeyword;
+            postCategory.MetalDescription = postCategoryVm.MetaDescription;
             postCategory.Status = postCategoryVm.Status;
 
         }
@@ -46,10 +46,9 @@ namespace TeduShop.Web.Infrastructure.Extensions
             post.CreatedBy = postVm.CreatedBy;
             post.UpdatedDate = postVm.UpdatedDate;
             post.UpdatedBy = postVm.UpdatedBy;
-            post.MetalKeyword = postVm.MetalKeyword;
-            post.MetalDescription = postVm.MetalDescription;
+            post.MetalKeyword = postVm.MetaKeyword;
+            post.MetalDescription = postVm.MetaDescription;
             post.Status = postVm.Status;
         }
-
     }
 }
