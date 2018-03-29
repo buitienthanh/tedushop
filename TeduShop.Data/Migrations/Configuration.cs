@@ -19,6 +19,8 @@
         protected override void Seed(TeduShop.Data.TeduShopDbContext context)
         {
             CreateProductCategorySample(context);
+            //  This method will be called after migrating to the latest version.
+
             //var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new TeduShopDbContext()));
 
             //var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new TeduShopDbContext()));
@@ -44,6 +46,7 @@
             //var adminUser = manager.FindByEmail("tedu.international@gmail.com");
 
             //manager.AddToRoles(adminUser.Id, new string[] { "Admin", "User" });
+
         }
 
         private void CreateProductCategorySample(TeduShop.Data.TeduShopDbContext context)

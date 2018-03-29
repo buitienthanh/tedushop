@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{34EDEABE-B5C9-46D3-B5EF-21821C1A562B}</ProjectGuid>
+    <ProjectGuid>{D573CFED-F642-4868-B921-4226CB26CDFE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TeduShop.Data</RootNamespace>
@@ -64,21 +64,9 @@
     <Compile Include="Infrastructure\IUnitOfWork.cs" />
     <Compile Include="Infrastructure\RepositoryBase.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
-    <Compile Include="Migrations\201803080330507_InitialDB.cs" />
-    <Compile Include="Migrations\201803080330507_InitialDB.Designer.cs">
-      <DependentUpon>201803080330507_InitialDB.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803090456239_AddErrorTable.cs" />
-    <Compile Include="Migrations\201803090456239_AddErrorTable.Designer.cs">
-      <DependentUpon>201803090456239_AddErrorTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803190248480_Intergrate-AspnetIdentity.cs" />
-    <Compile Include="Migrations\201803190248480_Intergrate-AspnetIdentity.Designer.cs">
-      <DependentUpon>201803190248480_Intergrate-AspnetIdentity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803190342046_ChangKey.cs" />
-    <Compile Include="Migrations\201803190342046_ChangKey.Designer.cs">
-      <DependentUpon>201803190342046_ChangKey.cs</DependentUpon>
+    <Compile Include="Migrations\201803280729575_InitialDB.cs" />
+    <Compile Include="Migrations\201803280729575_InitialDB.Designer.cs">
+      <DependentUpon>201803280729575_InitialDB.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -108,26 +96,17 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TeduShop.Common\TeduShop.Common.csproj">
-      <Project>{0e5e13e4-6964-4f6c-8448-0ca3bc6de5d4}</Project>
+      <Project>{300cc7f5-31a6-44b7-8d90-f354ac34b936}</Project>
       <Name>TeduShop.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\TeduShop.Model\TeduShop.Model.csproj">
-      <Project>{974ad3fd-4951-4035-8ea0-82dbf855ff3e}</Project>
+      <Project>{1a60e027-7b3b-4881-9ec3-2666b297cb43}</Project>
       <Name>TeduShop.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201803080330507_InitialDB.resx">
-      <DependentUpon>201803080330507_InitialDB.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803090456239_AddErrorTable.resx">
-      <DependentUpon>201803090456239_AddErrorTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803190248480_Intergrate-AspnetIdentity.resx">
-      <DependentUpon>201803190248480_Intergrate-AspnetIdentity.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803190342046_ChangKey.resx">
-      <DependentUpon>201803190342046_ChangKey.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201803280729575_InitialDB.resx">
+      <DependentUpon>201803280729575_InitialDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

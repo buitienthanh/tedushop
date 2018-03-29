@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TeduShop.Model.Models
 {
-    [Table("SupportOnline")]
+    [Table("SupportOnlines")]
     public class SupportOnline
     {
         [Key]
@@ -27,9 +27,11 @@ namespace TeduShop.Model.Models
         public string Email { set; get; }
 
         [MaxLength(50)]
+        public string Yahoo { set; get; }
+
+        [MaxLength(50)]
         public string Facebook { set; get; }
 
-        
         public bool Status { set; get; }
 
         public int? DisplayOrder { set; get; }

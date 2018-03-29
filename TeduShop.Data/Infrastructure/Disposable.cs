@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace TeduShop.Data.Infrastructure
 {
-    public class Disposable:IDisposable
+    public class Disposable : IDisposable
     {
         private bool isDisposed;
+
         ~Disposable()
         {
             Dispose(false);
@@ -19,19 +20,19 @@ namespace TeduShop.Data.Infrastructure
             Dispose(true);
             GC.SuppressFinalize(this);
         }
-
         private void Dispose(bool disposing)
         {
-            if(!isDisposed && disposing )
+            if (!isDisposed && disposing)
             {
                 DisposeCore();
             }
+
             isDisposed = true;
         }
 
+        // Ovveride this to dispose custom objects
         protected virtual void DisposeCore()
         {
-
         }
     }
 }

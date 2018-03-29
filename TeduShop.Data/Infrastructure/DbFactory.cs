@@ -2,17 +2,17 @@
 {
     public class DbFactory : Disposable, IDbFactory
     {
-        private TeduShopDbContext dbContect;
+        private TeduShopDbContext dbContext;
 
         public TeduShopDbContext Init()
         {
-            return dbContect ?? (dbContect = new Data.TeduShopDbContext());
+            return dbContext ?? (dbContext = new TeduShopDbContext());
         }
 
         protected override void DisposeCore()
         {
-            if (dbContect != null)
-                dbContect.Dispose();
+            if (dbContext != null)
+                dbContext.Dispose();
         }
     }
 }

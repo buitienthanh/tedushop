@@ -1,4 +1,10 @@
-﻿namespace TeduShop.Data.Infrastructure
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace TeduShop.Data.Infrastructure
 {
     public class UnitOfWork : IUnitOfWork
     {
@@ -12,7 +18,7 @@
 
         public TeduShopDbContext DbContext
         {
-            get { return dbContext ?? (dbContext = new TeduShopDbContext()); }
+            get { return dbContext ?? (dbContext = dbFactory.Init()); }
         }
 
         public void Commit()

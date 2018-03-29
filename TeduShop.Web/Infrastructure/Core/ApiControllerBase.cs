@@ -59,7 +59,7 @@ namespace TeduShop.Web.Infrastructure.Core
                 Error error = new Error();
                 error.CreatedDate = DateTime.Now;
                 error.Message = ex.Message;
-                error.StackTrage = ex.StackTrace;
+                error.StackTrace = ex.StackTrace;
                 _errorService.Create(error);
                 _errorService.Save();
             }

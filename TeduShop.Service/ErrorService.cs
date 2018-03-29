@@ -18,14 +18,13 @@ namespace TeduShop.Service
     {
         IErrorRepository _errorRepository;
         IUnitOfWork _unitOfWork;
-        public ErrorService(IErrorRepository errorRepository, IUnitOfWork unitOfWork)
+        public ErrorService(IErrorRepository errorRepository,IUnitOfWork unitOfWork)
         {
             this._errorRepository = errorRepository;
             this._unitOfWork = unitOfWork;
         }
         public Error Create(Error error)
         {
-
             return _errorRepository.Add(error);
         }
 

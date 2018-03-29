@@ -12,7 +12,7 @@ namespace TeduShop.Model.Models
 
         public string Message { set; get; }
 
-        public string StackTrage { set; get; }
+        public string StackTrace { set; get; }
 
         public DateTime CreatedDate { set; get; }
     }

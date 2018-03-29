@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using TeduShop.Data.Infrastructure;
 using TeduShop.Data.Repositories;
 using TeduShop.Model.Models;
+using System.Linq;
 
 namespace TeduShop.Service
 {
@@ -23,13 +25,13 @@ namespace TeduShop.Service
 
         IEnumerable<Post> GetAllByTagPaging(string tag, int page, int pageSize, out int totalRow);
 
-        void Savechanges();
+        void SaveChanges();
     }
 
     public class PostService : IPostService
     {
-        private IPostRepository _postRepository;
-        private IUnitOfWork _unitOfWork;
+        IPostRepository _postRepository;
+        IUnitOfWork _unitOfWork;
 
         public PostService(IPostRepository postRepository, IUnitOfWork unitOfWork)
         {
@@ -59,8 +61,9 @@ namespace TeduShop.Service
 
         public IEnumerable<Post> GetAllByTagPaging(string tag, int page, int pageSize, out int totalRow)
         {
-            //TODO:Select all post by Tag
+            //TODO: Select all post by tag
             return _postRepository.GetAllByTag(tag, page, pageSize, out totalRow);
+
         }
 
         public IEnumerable<Post> GetAllPaging(int page, int pageSize, out int totalRow)
@@ -73,7 +76,7 @@ namespace TeduShop.Service
             return _postRepository.GetSingleById(id);
         }
 
-        public void Savechanges()
+        public void SaveChanges()
         {
             _unitOfWork.Commit();
         }

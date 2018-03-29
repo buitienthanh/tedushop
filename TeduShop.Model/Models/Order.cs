@@ -30,16 +30,16 @@ namespace TeduShop.Model.Models
 
         [Required]
         [MaxLength(256)]
-        public string CustomerMessenger { set; get; }
+        public string CustomerMessage { set; get; }
 
         [MaxLength(256)]
         public string PaymentMethod { set; get; }
 
-        public string PaymentStatus { set; get; }
         public DateTime? CreatedDate { set; get; }
         public string CreatedBy { set; get; }
+        public string PaymentStatus { set; get; }
         public bool Status { set; get; }
 
-        public virtual IEnumerable<OrderDetail> OrderDetail { set; get; }
+        public virtual IEnumerable<OrderDetail> OrderDetails { set; get; }
     }
 }
