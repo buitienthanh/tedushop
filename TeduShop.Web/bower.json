@@ -1,9 +1,9 @@
 {
-	"name": "ASP.NET",
-	"private": true,
+  "name": "ASP.NET",
+  "private": true,
   "dependencies": {
-    "angular": "~1.5.5",
-    "angular-ui-router": "~0.2.18",
+    "angular": "~1.6.9",
+    "angular-ui-router": "~1.0.15",
     "jquery": "~2.2.3",
     "bootstrap": "~3.3.6",
     "fastclick": "~1.0.6",
@@ -11,6 +11,11 @@
     "toastr": "~2.1.2",
     "moment": "~2.21.0",
     "bootbox": "~4.4.0",
-    "ngBootbox": "~0.2.0"
+    "ngBootbox": "~0.2.0",
+    "ckeditor": "~4.9.1",
+    "ng-ckeditor": "~0.2.1"
+  },
+  "resolutions": {
+    "angular": "^1.0.8"
   }
 }
