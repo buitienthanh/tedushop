@@ -38,7 +38,15 @@
                 console.log('Cannot get list productCategories');
             });
         }
-
+        $scope.ChooseImage = function () {
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (fileUrl) {
+                $scope.$apply(function () {
+                    $scope.product.Image = fileUrl;
+                })
+            }
+            finder.popup();
+        }
         loadProduct();
         loadProductDetail();
     }
