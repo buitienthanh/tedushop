@@ -178,19 +178,34 @@
                 <li class="header">MAIN NAVIGATION</li>
                 <li class="treeview">
                     <a  ui-sref="home">
-                        <i class="fa fa-dashboard"></i> <span>Trang chủ</span> <i class="fa fa-angle-left pull-right"></i>
+                        <i class="fa fa-dashboard"></i> <span>Trang chủ</span> 
                     </a>
                 </li>
                 <li class="treeview">
                     <a href="javascript:void(0);">
                         <i class="fa fa-files-o"></i>
-                        <span>Sản phẩm</span>
-                        <span class="label label-primary pull-right">4</span>
+                        <span>Sản phẩm </span><i class="fa fa-angle-left pull-right"></i>
+                        <!--<span class="label label-primary pull-right">4</span>-->
                     </a>
                     <ul class="treeview-menu">
                         <li><a ui-sref="product_categories"><i class="fa fa-circle-o"></i> Danh mục sản phẩm</a></li>
                         <li><a ui-sref="products"><i class="fa fa-circle-o"></i> Sản phẩm</a></li>
                     </ul>
+                </li>
+                <li class="treeview">
+                    <a href="javascript:void(0);">
+                        <i class="fa fa-files-o"></i>
+                        <span>Tin tức </span><i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a ui-sref="post_categories"><i class="fa fa-circle-o"></i> Danh mục tin tức</a></li>
+                        <li><a ui-sref="posts"><i class="fa fa-circle-o"></i> Tin tức</a></li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a ui-sref="footers">
+                        <i class="fa fa-files-o"></i> <span>Footer</span> 
+                    </a>
                 </li>
             </ul>
         </section>

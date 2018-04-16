@@ -8,6 +8,9 @@ using TeduShop.Service;
 using TeduShop.Web.Infrastructure.Core;
 using TeduShop.Web.Models;
 using TeduShop.Web.Infrastructure.Extensions;
+using System.Linq;
+using System;
+using System.Web.Script.Serialization;
 
 namespace TeduShop.Web.Api
 {
@@ -23,87 +26,167 @@ namespace TeduShop.Web.Api
             this._postCategoryService = postCategoryService;
         }
 
-        [Route("getall")]
-        public HttpResponseMessage Get(HttpRequestMessage request)
+        [Route("getallparents")]
+        [HttpGet]
+        public HttpResponseMessage GetAll(HttpRequestMessage request)
         {
             return CreateHttpResponse(request, () =>
             {
-                var listCategory = _postCategoryService.GetAll();
+                var model = _postCategoryService.GetAll();
 
-                var listPostCategoryVm = Mapper.Map<List<PostCategoryViewModel>>(listCategory);
+                var responseData = Mapper.Map<IEnumerable<PostCategory>, IEnumerable<PostCategoryViewModel>>(model);
 
-                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listPostCategoryVm);
-
+                var response = request.CreateResponse(HttpStatusCode.OK, responseData);
                 return response;
             });
         }
 
-        [Route("add")]
-        public HttpResponseMessage Post(HttpRequestMessage request, PostCategoryViewModel postCategoryVm)
+        [Route("getbyid/{id:int}")]
+        [HttpGet]
+        public HttpResponseMessage GetById(HttpRequestMessage request, int id)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+                var model = _postCategoryService.GetById(id);
+
+                var responseData = Mapper.Map<PostCategory, PostCategoryViewModel>(model);
+
+                var response = request.CreateResponse(HttpStatusCode.OK, responseData);
+                return response;
+            });
+        }
+
+        [Route("getall")]
+        [HttpGet]
+        public HttpResponseMessage GetAll(HttpRequestMessage request, string keyword, int page, int pageSize = 10)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+                int totalRow = 0;
+                var model = _postCategoryService.GetAll(keyword);
+
+                totalRow = model.Count();
+                var query = model.OrderByDescending(x => x.CreatedDate).Skip(page * pageSize).Take(pageSize);
+
+                var responseData = Mapper.Map<IEnumerable<PostCategory>, IEnumerable<PostCategoryViewModel>>(query);
+
+                var paginationSet = new PaginationSet<PostCategoryViewModel>()
+                {
+                    Items = responseData,
+                    Page = page,
+                    TotalCount = totalRow,
+                    TotalPages = (int)Math.Ceiling((decimal)totalRow / pageSize)
+                };
+                var response = request.CreateResponse(HttpStatusCode.OK, paginationSet);
+                return response;
+            });
+        }
+
+
+        [Route("create")]
+        [HttpPost]
+        [AllowAnonymous]
+        public HttpResponseMessage Create(HttpRequestMessage request, PostCategoryViewModel postCategoryVm)
         {
             return CreateHttpResponse(request, () =>
             {
                 HttpResponseMessage response = null;
-                if (ModelState.IsValid)
+                if (!ModelState.IsValid)
                 {
-                    request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+                    response = request.CreateResponse(HttpStatusCode.BadRequest, ModelState);
                 }
                 else
                 {
-                    PostCategory newPostCategory = new PostCategory();
+                    var newPostCategory = new PostCategory();
                     newPostCategory.UpdatePostCategory(postCategoryVm);
-
-                    var category = _postCategoryService.Add(newPostCategory);
+                    newPostCategory.CreatedDate = DateTime.Now;
+                    _postCategoryService.Add(newPostCategory);
                     _postCategoryService.Save();
 
-                    response = request.CreateResponse(HttpStatusCode.Created, category);
-
+                    var responseData = Mapper.Map<PostCategory, PostCategoryViewModel>(newPostCategory);
+                    response = request.CreateResponse(HttpStatusCode.Created, responseData);
                 }
+
                 return response;
             });
         }
 
         [Route("update")]
-        public HttpResponseMessage Put(HttpRequestMessage request, PostCategoryViewModel postCategoryVm)
+        [HttpPut]
+        [AllowAnonymous]
+        public HttpResponseMessage Update(HttpRequestMessage request, PostCategoryViewModel postCategoryVm)
         {
             return CreateHttpResponse(request, () =>
             {
                 HttpResponseMessage response = null;
-                if (ModelState.IsValid)
+                if (!ModelState.IsValid)
                 {
-                    request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+                    response = request.CreateResponse(HttpStatusCode.BadRequest, ModelState);
                 }
                 else
                 {
-                    var postCategoryDb = _postCategoryService.GetById(postCategoryVm.ID);
-                    postCategoryDb.UpdatePostCategory(postCategoryVm);
-                    _postCategoryService.Update(postCategoryDb);
+                    var dbPostCategory = _postCategoryService.GetById(postCategoryVm.ID);
+                    dbPostCategory.UpdatePostCategory(postCategoryVm);
+                    dbPostCategory.UpdatedDate = DateTime.Now;
+                    _postCategoryService.Update(dbPostCategory);
                     _postCategoryService.Save();
 
-                    response = request.CreateResponse(HttpStatusCode.OK);
-
+                    var responseData = Mapper.Map<PostCategory, PostCategoryViewModel>(dbPostCategory);
+                    response = request.CreateResponse(HttpStatusCode.Created, responseData);
                 }
+
                 return response;
             });
         }
 
+        [Route("delete")]
+        [HttpDelete]
+        [AllowAnonymous]
         public HttpResponseMessage Delete(HttpRequestMessage request, int id)
         {
             return CreateHttpResponse(request, () =>
             {
                 HttpResponseMessage response = null;
-                if (ModelState.IsValid)
+                if (!ModelState.IsValid)
                 {
-                    request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+                    response = request.CreateResponse(HttpStatusCode.BadRequest, ModelState);
                 }
                 else
                 {
-                    _postCategoryService.Delete(id);
+                    var OldPostCategory = _postCategoryService.Delete(id);
                     _postCategoryService.Save();
 
-                    response = request.CreateResponse(HttpStatusCode.OK);
-
+                    var responseData = Mapper.Map<PostCategory, PostCategoryViewModel>(OldPostCategory);
+                    response = request.CreateResponse(HttpStatusCode.Created, responseData);
                 }
+
+                return response;
+            });
+        }
+
+        [Route("deletemulti")]
+        [HttpDelete]
+        [AllowAnonymous]
+        public HttpResponseMessage DeleteMulti(HttpRequestMessage request, string checkedPostCategories)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
+                if (!ModelState.IsValid)
+                {
+                    response = request.CreateResponse(HttpStatusCode.BadRequest, ModelState);
+                }
+                else
+                {
+                    var listPostCategory = new JavaScriptSerializer().Deserialize<List<int>>(checkedPostCategories);
+                    foreach (var item in listPostCategory)
+                    {
+                        _postCategoryService.Delete(item);
+                    }
+                    _postCategoryService.Save();
+                    response = request.CreateResponse(HttpStatusCode.OK, listPostCategory.Count);
+                }
+
                 return response;
             });
         }

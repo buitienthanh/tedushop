@@ -1,0 +1,48 @@
+﻿  <!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Cập nhật footer: {{footer.ID}}
+
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+        <li><a href="#">Sản phẩm</a></li>
+        <li><a ui-sref="product_categories">Danh mục</a></li>
+        <li class="active">Cập nhật</li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+    <!-- Horizontal Form -->
+    <div class="box box-info">
+        <div class="box-header with-border">
+            <h3 class="box-title">{{footer.ID}}</h3>
+        </div><!-- /.box-header -->
+        <!-- form start -->
+        <form class="form-horizontal" novalidate name="frmUpdateFooter" role="form" ng-submit="UpdateFooter()">
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">ID</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control"  ng-maxlength="256" required name="id" ng-model="footer.ID">
+                        <span ng-show="frmUpdateFooter.id.$invalid" class="has-error">* Phải nhập tên danh mục</span>
+                        <span ng-show="frmUpdateFooter.id.$error.maxlength" class="has-error">* Tên id chỉ được 256 ký tự</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Nội dung</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" required name="content" ng-model="footer.Content"></textarea>
+                        <!--<input type="text" class="form-control" required name="content" ng-model="footer.Content">-->
+                        <span ng-show="frmUpdateFooter.content.$invalid" class="has-error">* Phải nhập tiêu đề Seo</span>
+                    </div>
+                </div>
+   
+            </div><!-- /.box-body -->
+            <div class="box-footer">
+                <button ui-sref="footers" class="btn btn-default">Hủy</button>
+                <button type="submit" ng-disabled="frmUpdateFooter.$invalid" class="btn btn-success pull-right">Lưu</button>
+            </div><!-- /.box-footer -->
+        </form>
+    </div><!-- /.box -->
+</section><!-- /.content -->
