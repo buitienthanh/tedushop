@@ -9,7 +9,7 @@
                 var url = "/" + category.Alias + ".pc-" + category.ID + ".html";
                 var childCategories = Model.Where(x => x.ParentID == category.ID&& x.Status==true);
                 <li class="item1">
-                    <a href="@url">@(category.Name) </a>
+                    <a href="@url">@(category.Name) @Html.Raw(childCategories.Count() > 0 ? @"<img class=""arrow-img"" src=""/Assets/client/images/arrow1.png"" alt="""" />" : "")</a>
                     
                     @if (childCategories.Count() > 0)
                     {

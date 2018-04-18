@@ -62,7 +62,7 @@
         }
 
         function deleteProductCategory(id) {
-            $ngBootbox.confirm("Bạn có chắc muốn xóa ( ID "+ id +" ) ?").then(function () {
+            $ngBootbox.confirm("Bạn có chắc muốn xóa ( ID " + id + " ) ?").then(function () {
                 var config = {
                     params: {
                         id: id

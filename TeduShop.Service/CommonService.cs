@@ -12,6 +12,7 @@ namespace TeduShop.Service
 {
     public interface ICommonService
     {
+        IEnumerable<Slide> GetSlides();
         Footer GetFooter();
         IEnumerable<Footer> GetAll();
         Footer Add(Footer Footer);
@@ -26,11 +27,13 @@ namespace TeduShop.Service
     public class CommonService : ICommonService
     {
         IFooterRepository _footerRepository;
+        ISlideRepository _slideRepository;
         IUnitOfWork _unitOfWork;
-        public CommonService(IFooterRepository footerRepository, IUnitOfWork unitOfWork)
+        public CommonService(IFooterRepository footerRepository, IUnitOfWork unitOfWork, ISlideRepository slideRepository)
         {
             _footerRepository = footerRepository;
             _unitOfWork = unitOfWork;
+            _slideRepository = slideRepository;
         }
 
         public Footer Add(Footer Footer)
@@ -56,6 +59,11 @@ namespace TeduShop.Service
         public Footer GetFooter()
         {
             return _footerRepository.GetSingleByCondition(x=>x.ID == CommonConstants.DefaultFooterId);
+        }
+
+        public IEnumerable<Slide> GetSlides()
+        {
+            return _slideRepository.GetMulti(x=>x.Status==true);
         }
 
         public void Save()

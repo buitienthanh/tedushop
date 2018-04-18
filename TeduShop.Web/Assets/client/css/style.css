@@ -178,6 +178,7 @@ ul.kid-menu{
 	list-style: none;
 	margin: 0;
 	background: #FBFBFC;
+    position:relative;
 }
 ul {
 	padding: 0;
@@ -233,7 +234,10 @@ ul.cute li{
 	background: #fff;
 }
 .arrow-img {
-	padding: 0em 0em 0 6.5em;
+	padding: 0em 0em 0 0em;
+    position:absolute;
+    right:20px;
+    top:20px   
 }
 .img-arrow{
 	padding: 0 0 0 8em;
