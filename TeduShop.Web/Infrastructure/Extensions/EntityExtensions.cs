@@ -29,6 +29,18 @@ namespace TeduShop.Web.Infrastructure.Extensions
             postCategory.Status = postCategoryVm.Status;
 
         }
+        public static void UpdateSlide(this Slide slide, SlideViewModel slideVm)
+        {
+            slide.ID = slideVm.ID;
+            slide.Name = slideVm.Name;
+            slide.Description = slideVm.Description;
+            slide.DisplayOrder = slideVm.DisplayOrder;
+            slide.Image = slideVm.Image;
+            slide.Url = slideVm.Url;
+            slide.Status = slideVm.Status;
+            slide.Content = slideVm.Content;
+
+        }
         public static void UpdateFooter(this Footer footer, FooterViewModel footerVm)
         {
             footer.ID = footerVm.ID;

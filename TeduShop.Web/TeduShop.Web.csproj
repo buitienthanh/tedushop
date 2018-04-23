@@ -199,6 +199,7 @@
     <Compile Include="Api\PostController.cs" />
     <Compile Include="Api\ProductCategoryController.cs" />
     <Compile Include="Api\ProductController.cs" />
+    <Compile Include="Api\SlideController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -206,8 +207,11 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AboutController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -269,6 +273,13 @@
     <Content Include="app\components\product_categories\productCategoryEditView.html" />
     <Content Include="app\components\product_categories\productCategoryListController.js" />
     <Content Include="app\components\product_categories\productCategoryListView.html" />
+    <Content Include="app\components\slides\slideAddController.js" />
+    <Content Include="app\components\slides\slideAddView.html" />
+    <Content Include="app\components\slides\slideEditController.js" />
+    <Content Include="app\components\slides\slideEditView.html" />
+    <Content Include="app\components\slides\slideListController.js" />
+    <Content Include="app\components\slides\slideListView.html" />
+    <Content Include="app\components\slides\slides.module.js" />
     <Content Include="app\shared\directives\pagerDirective.html" />
     <Content Include="app\shared\directives\pagerDirective.js" />
     <Content Include="app\shared\filters\statusFilter.js" />
@@ -4569,6 +4580,20 @@
     <Content Include="Assets\client\css\etalage.css" />
     <Content Include="Assets\client\css\form.css" />
     <Content Include="Assets\client\css\style.css" />
+    <Content Include="Assets\client\fontawesome-free-5.0.10\LICENSE.txt" />
+    <Content Include="Assets\client\fontawesome-free-5.0.10\web-fonts-with-css\css\fa-brands.css" />
+    <Content Include="Assets\client\fontawesome-free-5.0.10\web-fonts-with-css\css\fa-brands.min.css" />
+    <Content Include="Assets\client\fontawesome-free-5.0.10\web-fonts-with-css\css\fa-regular.css" />
+    <Content Include="Assets\client\fontawesome-free-5.0.10\web-fonts-with-css\css\fa-regular.min.css" />
+    <Content Include="Assets\client\fontawesome-free-5.0.10\web-fonts-with-css\css\fa-solid.css" />
+    <Content Include="Assets\client\fontawesome-free-5.0.10\web-fonts-with-css\css\fa-solid.min.css" />
+    <Content Include="Assets\client\fontawesome-free-5.0.10\web-fonts-with-css\css\fontawesome-all.css" />
+    <Content Include="Assets\client\fontawesome-free-5.0.10\web-fonts-with-css\css\fontawesome-all.min.css" />
+    <Content Include="Assets\client\fontawesome-free-5.0.10\web-fonts-with-css\css\fontawesome.css" />
+    <Content Include="Assets\client\fontawesome-free-5.0.10\web-fonts-with-css\css\fontawesome.min.css" />
+    <Content Include="Assets\client\fontawesome-free-5.0.10\web-fonts-with-css\webfonts\fa-brands-400.svg" />
+    <Content Include="Assets\client\fontawesome-free-5.0.10\web-fonts-with-css\webfonts\fa-regular-400.svg" />
+    <Content Include="Assets\client\fontawesome-free-5.0.10\web-fonts-with-css\webfonts\fa-solid-900.svg" />
     <Content Include="Assets\client\images\a-star.png" />
     <Content Include="Assets\client\images\arrow1.png" />
     <Content Include="Assets\client\images\arrow2.png" />
@@ -4646,6 +4671,8 @@
     <Folder Include="app\shared\navigation\" />
     <Folder Include="Assets\admin\js\pages\" />
     <Folder Include="UploadFiles\" />
+    <Folder Include="Views\About\" />
+    <Folder Include="Views\Account\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -4956,6 +4983,59 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\Category.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Product\Detail.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Product\Category.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\client\fontawesome-free-5.0.10\README.md" />
+    <Content Include="Assets\client\fontawesome-free-5.0.10\web-fonts-with-css\less\fa-brands.less" />
+    <Content Include="Assets\client\fontawesome-free-5.0.10\web-fonts-with-css\less\fa-regular.less" />
+    <Content Include="Assets\client\fontawesome-free-5.0.10\web-fonts-with-css\less\fa-solid.less" />
+    <Content Include="Assets\client\fontawesome-free-5.0.10\web-fonts-with-css\less\fontawesome.less" />
+    <Content Include="Assets\client\fontawesome-free-5.0.10\web-fonts-with-css\less\_animated.less" />
+    <Content Include="Assets\client\fontawesome-free-5.0.10\web-fonts-with-css\less\_bordered-pulled.less" />
+    <Content Include="Assets\client\fontawesome-free-5.0.10\web-fonts-with-css\less\_core.less" />
+    <Content Include="Assets\client\fontawesome-free-5.0.10\web-fonts-with-css\less\_fixed-width.less" />
+    <Content Include="Assets\client\fontawesome-free-5.0.10\web-fonts-with-css\less\_icons.less" />
+    <Content Include="Assets\client\fontawesome-free-5.0.10\web-fonts-with-css\less\_larger.less" />
+    <Content Include="Assets\client\fontawesome-free-5.0.10\web-fonts-with-css\less\_list.less" />
+    <Content Include="Assets\client\fontawesome-free-5.0.10\web-fonts-with-css\less\_mixins.less" />
+    <Content Include="Assets\client\fontawesome-free-5.0.10\web-fonts-with-css\less\_rotated-flipped.less" />
+    <Content Include="Assets\client\fontawesome-free-5.0.10\web-fonts-with-css\less\_screen-reader.less" />
+    <Content Include="Assets\client\fontawesome-free-5.0.10\web-fonts-with-css\less\_stacked.less" />
+    <Content Include="Assets\client\fontawesome-free-5.0.10\web-fonts-with-css\less\_variables.less" />
+    <Content Include="Assets\client\fontawesome-free-5.0.10\web-fonts-with-css\scss\fa-brands.scss" />
+    <Content Include="Assets\client\fontawesome-free-5.0.10\web-fonts-with-css\scss\fa-regular.scss" />
+    <Content Include="Assets\client\fontawesome-free-5.0.10\web-fonts-with-css\scss\fa-solid.scss" />
+    <Content Include="Assets\client\fontawesome-free-5.0.10\web-fonts-with-css\scss\fontawesome.scss" />
+    <Content Include="Assets\client\fontawesome-free-5.0.10\web-fonts-with-css\scss\_animated.scss" />
+    <Content Include="Assets\client\fontawesome-free-5.0.10\web-fonts-with-css\scss\_bordered-pulled.scss" />
+    <Content Include="Assets\client\fontawesome-free-5.0.10\web-fonts-with-css\scss\_core.scss" />
+    <Content Include="Assets\client\fontawesome-free-5.0.10\web-fonts-with-css\scss\_fixed-width.scss" />
+    <Content Include="Assets\client\fontawesome-free-5.0.10\web-fonts-with-css\scss\_icons.scss" />
+    <Content Include="Assets\client\fontawesome-free-5.0.10\web-fonts-with-css\scss\_larger.scss" />
+    <Content Include="Assets\client\fontawesome-free-5.0.10\web-fonts-with-css\scss\_list.scss" />
+    <Content Include="Assets\client\fontawesome-free-5.0.10\web-fonts-with-css\scss\_mixins.scss" />
+    <Content Include="Assets\client\fontawesome-free-5.0.10\web-fonts-with-css\scss\_rotated-flipped.scss" />
+    <Content Include="Assets\client\fontawesome-free-5.0.10\web-fonts-with-css\scss\_screen-reader.scss" />
+    <Content Include="Assets\client\fontawesome-free-5.0.10\web-fonts-with-css\scss\_stacked.scss" />
+    <Content Include="Assets\client\fontawesome-free-5.0.10\web-fonts-with-css\scss\_variables.scss" />
+    <Content Include="Assets\client\fontawesome-free-5.0.10\web-fonts-with-css\webfonts\fa-brands-400.eot" />
+    <Content Include="Assets\client\fontawesome-free-5.0.10\web-fonts-with-css\webfonts\fa-brands-400.ttf" />
+    <Content Include="Assets\client\fontawesome-free-5.0.10\web-fonts-with-css\webfonts\fa-brands-400.woff" />
+    <Content Include="Assets\client\fontawesome-free-5.0.10\web-fonts-with-css\webfonts\fa-brands-400.woff2" />
+    <Content Include="Assets\client\fontawesome-free-5.0.10\web-fonts-with-css\webfonts\fa-regular-400.eot" />
+    <Content Include="Assets\client\fontawesome-free-5.0.10\web-fonts-with-css\webfonts\fa-regular-400.ttf" />
+    <Content Include="Assets\client\fontawesome-free-5.0.10\web-fonts-with-css\webfonts\fa-regular-400.woff" />
+    <Content Include="Assets\client\fontawesome-free-5.0.10\web-fonts-with-css\webfonts\fa-regular-400.woff2" />
+    <Content Include="Assets\client\fontawesome-free-5.0.10\web-fonts-with-css\webfonts\fa-solid-900.eot" />
+    <Content Include="Assets\client\fontawesome-free-5.0.10\web-fonts-with-css\webfonts\fa-solid-900.ttf" />
+    <Content Include="Assets\client\fontawesome-free-5.0.10\web-fonts-with-css\webfonts\fa-solid-900.woff" />
+    <Content Include="Assets\client\fontawesome-free-5.0.10\web-fonts-with-css\webfonts\fa-solid-900.woff2" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -7,6 +7,7 @@
         'tedushop.footers',
         'tedushop.post_categories',
         'tedushop.posts',
+        'tedushop.slides',
          'tedushop.common'])
         .config(config)
         .config(configAuthentication);
