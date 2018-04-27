@@ -14,11 +14,11 @@
         <div class="women">
             <a href="/@(category.Alias).pc-@(category.ID).html"><h4>@category.Name <span>@Model.TotalCount sản phẩm</span> </h4></a>
             <ul class="w_nav">
-                <li>Sort : </li>
-                <li><a class="active" href="#">popular</a></li> |
-                <li><a href="#">new </a></li> |
-                <li><a href="#">discount</a></li> |
-                <li><a href="#">price: Low High </a></li>
+                <li>Sắp sếp : </li>
+                <li><a class="active" href="?page=@Model.Page&sort=popular">Thịnh hành</a></li> |
+                <li><a href="?page=@Model.Page&sort=new">Mới </a></li> |
+                <li><a href="?page=@Model.Page&sort=discount">Giảm giá</a></li> |
+                <li><a href="?page=@Model.Page&sort=price">Giá: Thấp -> Cao </a></li>
                 <div class="clearfix"> </div>
             </ul>
             <div class="clearfix"> </div>
@@ -27,7 +27,7 @@
     <div class="grid-product">
         @foreach (var product in Model.Items)
         {
-            var url = "/" + product.Alias + ".p-" + product.ID;
+            var url = "/" + product.Alias + ".p-" + product.ID + ".html";
             <div class="product-grid">
                 <div class="content_box">
                     <a href="@url">
@@ -41,10 +41,22 @@
                 </div>
                 <h4><a href="@url"> @product.Name</a></h4>
                 <p>@product.Description</p>
-                @(product.Price == 0 ? "Lien he" : product.Price.ToString("N2"))
+                @if (product.PromotionPrice.HasValue)
+                {
+                    <span class="actual">@product.PromotionPrice.Value.ToString("N0") đ</span><br />
+                    <span class="reducedfrom">@product.Price.ToString("N0") đ</span>
+                }
+                else
+                {
+                    @(product.Price == 0 ? "Liên hệ" : product.Price.ToString("N0") + " đ")
+                }
+                @*@(product.Price == 0 ? "Liên hệ" : product.Price.ToString("N0") + " đ")*@
             </div>
+            
         }
-        <div class="clearfix"> </div>
+       
+        <div class="clearfix"></div>
+        
         @if (Model.TotalPages > 1)
         {
             // Create numeric links
@@ -98,7 +110,7 @@
 }
 else
 {
-    <div class="text-center">Không có bản ghi nào dc tìm thấy</div>
+    <div class="text-center text-danger"><h1>Không có bản ghi nào dc tìm thấy</h1></div>
 }
 
 </div>

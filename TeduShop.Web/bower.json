@@ -13,9 +13,7 @@
     "bootbox": "~4.4.0",
     "ngBootbox": "~0.2.0",
     "ckeditor": "~4.9.1",
-    "ng-ckeditor": "~0.2.1"
-  },
-  "resolutions": {
-    "angular": "~1.6.9"
+    "ng-ckeditor": "~0.2.1",
+    "jquery-ui": "~1.12.1"
   }
 }
