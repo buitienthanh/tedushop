@@ -17,6 +17,7 @@
         $scope.GetSeoTitle = GetSeoTitle;
         function GetSeoTitle() {
             $scope.product.Alias = commonService.getSeoTitle($scope.product.Name);
+            $scope.product.NameUnsigned = commonService.getNameUnsigned($scope.product.Name);
         }
 
         function AddProduct() {

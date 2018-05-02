@@ -91,6 +91,7 @@ namespace TeduShop.Web.Infrastructure.Extensions
             product.Status = productVm.Status;
             product.Tags = productVm.Tags;
             product.Quantity = productVm.Quantity;
+            product.NameUnsigned = productVm.NameUnsigned;
         }
         public static void UpdatePost(this Post post, PostViewModel postVm)
         {
@@ -111,6 +112,7 @@ namespace TeduShop.Web.Infrastructure.Extensions
             post.MetaKeyword = postVm.MetaKeyword;
             post.MetaDescription = postVm.MetaDescription;
             post.Status = postVm.Status;
+            post.NameUnsigned = postVm.NameUnsigned;
         }
     }
 }

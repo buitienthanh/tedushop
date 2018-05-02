@@ -39,6 +39,8 @@ namespace TeduShop.Web.Models
 
         public bool Status { set; get; }
 
+        public string NameUnsigned { set; get; }
+
         public virtual PostCategoryViewModel PostCategory { set; get; }
 
         public virtual IEnumerable<PostTagViewModel> PostTags { set; get; }

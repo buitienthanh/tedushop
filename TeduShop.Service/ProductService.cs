@@ -189,15 +189,19 @@ namespace TeduShop.Service
 
         public IEnumerable<Product> Search(string keyword, int page, int pageSize, string sort, out int totalRow)
         {
-            if (!string.IsNullOrEmpty(keyword))
-            {
-                keyword = TeduShop.Common.Convert.ToUnsignString(keyword.Trim().ToLower());
-            }
-            var query = _productRepository.GetMulti(x =>x.Status).AsQueryable();
-            query = query.Where(delegate (Product x)
-            {
-                return TeduShop.Common.Convert.ToUnsignString(x.Name.ToLower()).Contains(keyword);
-            }).AsQueryable();
+
+            var query = _productRepository.GetMulti(x => x.Status && x.Name.Contains(keyword) || x.Status&& x.NameUnsigned.Contains(keyword));
+            
+            //if (!string.IsNullOrEmpty(keyword))
+            //{
+            //    keyword = TeduShop.Common.Convert.ToUnsignString(keyword.Trim().ToLower());
+            //}
+            //var query = _productRepository.GetMulti(x =>x.Status).AsQueryable();
+            //query = query.Where(delegate (Product x)
+            //{
+            //    return TeduShop.Common.Convert.ToUnsignString(x.Name.ToLower()).Contains(keyword);
+            //}).AsQueryable(); 
+
             switch (sort)
             {
                 case "popular":

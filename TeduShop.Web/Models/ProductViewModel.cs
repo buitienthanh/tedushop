@@ -53,6 +53,8 @@ namespace TeduShop.Web.Models
 
         public int Quantity { set; get; }
 
+        public string NameUnsigned { set; get; }
+
         public virtual ProductCategoryViewModel ProductCategory { set; get; }
     }
 }

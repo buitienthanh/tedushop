@@ -80,6 +80,10 @@
     <Compile Include="Migrations\201804230945410_AddMoreQuantity.Designer.cs">
       <DependentUpon>201804230945410_AddMoreQuantity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805020201189_NameUnsigned.cs" />
+    <Compile Include="Migrations\201805020201189_NameUnsigned.Designer.cs">
+      <DependentUpon>201805020201189_NameUnsigned.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ErrorRepository.cs" />
@@ -128,6 +132,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804230945410_AddMoreQuantity.resx">
       <DependentUpon>201804230945410_AddMoreQuantity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805020201189_NameUnsigned.resx">
+      <DependentUpon>201805020201189_NameUnsigned.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

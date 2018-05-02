@@ -20,6 +20,10 @@ namespace TeduShop.Model.Models
 
         [Required]
         [MaxLength(256)]
+        public string NameUnsigned { set; get; }
+
+        [Required]
+        [MaxLength(256)]
         public string Alias { set; get; }
 
         [Required]

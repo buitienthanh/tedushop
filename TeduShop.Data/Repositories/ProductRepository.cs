@@ -26,7 +26,7 @@ namespace TeduShop.Data.Repositories
                         where pt.TagID == tagId
                         select p;
             totalRow = query.Count();
-            return query.OrderByDescending(x => x.CreatedDate).Skip((page - 1) * pageSize).Take(pageSize);
+            return query.OrderByDescending(x=>x.CreatedDate).Skip((page - 1) * pageSize).Take(pageSize);
         }
     }
 }

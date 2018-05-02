@@ -13,6 +13,7 @@
         $scope.GetSeoTitle = GetSeoTitle;
         function GetSeoTitle() {
             $scope.product.Alias = commonService.getSeoTitle($scope.product.Name);
+            $scope.product.NameUnsigned = commonService.getNameUnsigned($scope.product.Name);
         }
         function loadProductDetail() {
             apiService.get('/api/product/getbyid/' + $stateParams.id, null, function (result) {

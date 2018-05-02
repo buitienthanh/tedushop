@@ -23,15 +23,16 @@
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">Tên sản phẩm</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" required ng-maxlength="256" name="name" ng-change="GetSeoTitle()" ng-model="product.Name">
+                        <input type="text" class="form-control" required ng-maxlength="256" name="name" ng-change="GetSeoTitle()"  ng-model="product.Name">
                         <span ng-show="frmAddProduct.name.$invalid" class="has-error">* Phải nhập tên danh mục</span>
                         <span ng-show="frmAddProduct.name.$error.maxlength" class="has-error">* Tên danh mục chỉ được 256 ký tự</span>
                     </div>
                 </div>
+            
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">Tiêu đề SEO</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" required ng-maxlength="256" name="alias" ng-model="product.Alias">
+                        <input type="text" class="form-control" required ng-maxlength="256" name="alias"  ng-model="product.Alias">
                         <span ng-show="frmAddProduct.alias.$invalid" class="has-error">* Phải nhập tiêu đề Seo</span>
                         <span ng-show="frmAddProduct.alias.$error.maxlength" class="has-error">* Tiêu đề Seo chỉ được 256 ký tự</span>
                     </div>
@@ -54,7 +55,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">So luong</label>
+                    <label for="inputEmail3" class="col-sm-2 control-label">Số lượng</label>
                     <div class="col-sm-10">
                         <input type="number" class="form-control"  name="quantity" ng-model="product.Quantity">
                     </div>
@@ -122,6 +123,14 @@
                     <label for="inputEmail3" class="col-sm-2 control-label">Meta Description</label>
                     <div class="col-sm-10">
                         <textarea class="form-control" name="metaKeyword" ng-model="product.MetaDescription"></textarea>
+                    </div>
+                </div>
+                <div class="form-group" style="visibility:hidden">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Tên ko dấu</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" required ng-maxlength="256" name="nameUnsigned" ng-model="product.NameUnsigned">
+                        <span ng-show="frmAddProduct.nameUnsigned.$invalid" class="has-error">* Phải nhập tên không dấu</span>
+                        <span ng-show="frmAddProduct.nameUnsigned.$error.maxlength" class="has-error">* Tên không dấu chỉ được 256 ký tự</span>
                     </div>
                 </div>
                 <div class="form-group">
