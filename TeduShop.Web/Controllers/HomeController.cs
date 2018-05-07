@@ -15,11 +15,13 @@ namespace TeduShop.Web.Controllers
         IProductCategoryService _productCategoryService;
         IProductService _productService;
         ICommonService _commonService;
-        public HomeController(IProductCategoryService productCategoryService,ICommonService commonService, IProductService productService)
+        IPageService _pageService;
+        public HomeController(IProductCategoryService productCategoryService,ICommonService commonService, IProductService productService, IPageService pageService)
         {
             _productCategoryService = productCategoryService;
             _productService = productService;
             _commonService = commonService;
+            _pageService = pageService;
         }
         public ActionResult Index()
         {
@@ -62,8 +64,9 @@ namespace TeduShop.Web.Controllers
         [ChildActionOnly]
         public ActionResult Header()
         {
-
-            return PartialView();
+            var pageModel = _pageService.GetAll();
+            var model = Mapper.Map<IEnumerable<Page>, IEnumerable<PageViewModel>>(pageModel);
+            return PartialView(model);
         }
 
         [ChildActionOnly]

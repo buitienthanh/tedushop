@@ -114,5 +114,19 @@ namespace TeduShop.Web.Infrastructure.Extensions
             post.Status = postVm.Status;
             post.NameUnsigned = postVm.NameUnsigned;
         }
+        public static void UpdatePage(this Page page, PageViewModel pageVm)
+        {
+            page.ID = pageVm.ID;
+            page.Name = pageVm.Name;
+            page.Alias = pageVm.Alias;
+            page.Content = pageVm.Content;
+            page.CreatedDate = pageVm.CreatedDate;
+            page.CreatedBy = pageVm.CreatedBy;
+            page.UpdatedDate = pageVm.UpdatedDate;
+            page.UpdatedBy = pageVm.UpdatedBy;
+            page.MetaKeyword = pageVm.MetaKeyword;
+            page.MetaDescription = pageVm.MetaDescription;
+            page.Status = pageVm.Status;
+        }
     }
 }

@@ -195,6 +195,7 @@
     <Compile Include="Api\AccountController.cs" />
     <Compile Include="Api\FooterController.cs" />
     <Compile Include="Api\HomeController.cs" />
+    <Compile Include="Api\PageController.cs" />
     <Compile Include="Api\PostCategoryController.cs" />
     <Compile Include="Api\PostController.cs" />
     <Compile Include="Api\ProductCategoryController.cs" />
@@ -211,6 +212,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PageController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -221,6 +223,7 @@
     <Compile Include="Mappings\AutoMapperConfiguration.cs" />
     <Compile Include="Models\FooterViewModel.cs" />
     <Compile Include="Models\HomeViewModel.cs" />
+    <Compile Include="Models\PageViewModel.cs" />
     <Compile Include="Models\PostCategoryViewModel.cs" />
     <Compile Include="Models\PostTagViewModel.cs" />
     <Compile Include="Models\PostViewModel.cs" />
@@ -245,6 +248,13 @@
     <Content Include="app\components\home\rootController.js" />
     <Content Include="app\components\login\loginController.js" />
     <Content Include="app\components\login\loginView.html" />
+    <Content Include="app\components\pages\page.module.js" />
+    <Content Include="app\components\pages\pageAddController.js" />
+    <Content Include="app\components\pages\pageAddView.html" />
+    <Content Include="app\components\pages\pageEditController.js" />
+    <Content Include="app\components\pages\pageEditView.html" />
+    <Content Include="app\components\pages\pageListController.js" />
+    <Content Include="app\components\pages\pageListView.html" />
     <Content Include="app\components\posts\postAddController.js" />
     <Content Include="app\components\posts\postAddView.html" />
     <Content Include="app\components\posts\postEditController.js" />
@@ -5683,6 +5693,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Product\ListByTag.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Page\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,15 +1,17 @@
-﻿<div class="header">
+﻿@model IEnumerable<TeduShop.Web.Models.PageViewModel>
+
+<div class="header">
     <div class="top-header">
         <div class="container">
             <div class="top-header-left">
-                <ul class="support">
-                    <li><a href="#"><label> </label></a></li>
-                    <li><a href="#">24/7 Hỗ trợ<span class="live"> trực tuyến</span></a></li>
-                </ul>
-                <ul class="support">
-                    <li class="van"><a href="#"><label> </label></a></li>
-                    <li><a href="#">Miễn phí vẫn chuyển <span class="live"></span></a></li>
-                </ul>
+                @foreach (var item in Model)
+                {
+                    <ul class="support">
+                        <li @if (item.ID%3==0) {@Html.Raw(@"class=""van""") }><a href="#"><label> </label></a></li>
+                        <li><a href="/trang/@(item.Alias).html">@item.Name</a></li>
+                    </ul>
+                }
+             
                 <div class="clearfix"> </div>
             </div>
             <div class="top-header-right">
