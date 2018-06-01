@@ -30,7 +30,7 @@
                 });
         }
      
-       
+
       
         loadFooterDetail();
     }

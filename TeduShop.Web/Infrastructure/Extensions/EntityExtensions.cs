@@ -128,27 +128,5 @@ namespace TeduShop.Web.Infrastructure.Extensions
             page.MetaDescription = pageVm.MetaDescription;
             page.Status = pageVm.Status;
         }
-        public static void UpdateContactDetail(this ContactDetail contactDetail, ContactDetailViewModel contactDetailVm)
-        {
-            contactDetail.ID = contactDetailVm.ID;
-            contactDetail.Name = contactDetailVm.Name;
-            contactDetail.Email = contactDetailVm.Email;
-            contactDetail.Web = contactDetailVm.Web;
-            contactDetail.Address = contactDetailVm.Address;
-            contactDetail.Others = contactDetailVm.Others;
-            contactDetail.Lat = contactDetailVm.Lat;
-            contactDetail.Lng = contactDetailVm.Lng;
-            contactDetail.Status = contactDetailVm.Status;
-            contactDetail.Phone = contactDetailVm.Phone;
-        }
-        public static void UpdateFeedBack(this FeedBack feedBack, FeedBackViewModel feedBackVm)
-        {
-            feedBack.ID = feedBackVm.ID;
-            feedBack.Name = feedBackVm.Name;
-            feedBack.Email = feedBackVm.Email;
-            feedBack.Message = feedBackVm.Message;
-            feedBack.CreatedDate = DateTime.Now;
-           
-        }
     }
 }
