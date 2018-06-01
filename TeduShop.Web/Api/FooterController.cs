@@ -15,6 +15,7 @@ using TeduShop.Web.Models;
 namespace TeduShop.Web.Api
 {
     [RoutePrefix("api/footer")]
+    [Authorize]
     public class FooterController : ApiControllerBase
     {
         private ICommonService _commonService;

@@ -9,6 +9,7 @@
         'tedushop.posts',
         'tedushop.slides',
         'tedushop.pages',
+        'tedushop.contact_details',
          'tedushop.common'])
         .config(config)
         .config(configAuthentication);
@@ -16,6 +17,7 @@
     config.$inject = ['$stateProvider', '$urlRouterProvider'];
 
     function config($stateProvider, $urlRouterProvider) {
+     
         $stateProvider
             .state('base', {
                 url: '',
