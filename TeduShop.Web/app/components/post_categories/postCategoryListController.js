@@ -18,7 +18,7 @@
         function selectAll() {
             if ($scope.isAll === false) {
                 angular.forEach($scope.postCategories, function (item) {
-                    item.checked = true;
+                    item.checked = true;ng
                 });
                 $scope.isAll = true;
             } else {

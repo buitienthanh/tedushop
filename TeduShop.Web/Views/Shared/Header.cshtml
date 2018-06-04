@@ -4,14 +4,18 @@
     <div class="top-header">
         <div class="container">
             <div class="top-header-left">
-                @foreach (var item in Model)
+                @foreach (var item in Model.Where(x=>x.Status))
                 {
                     <ul class="support">
                         <li @if (item.ID%3==0) {@Html.Raw(@"class=""van""") }><a href="#"><label> </label></a></li>
                         <li><a href="/trang/@(item.Alias).html">@item.Name</a></li>
                     </ul>
                 }
-             
+                
+                <ul class="support">
+                    <li  class="van"><a href="#"><label> </label></a></li>
+                    <li><a href="/lien-he.html">Liên hệ</a></li>
+                </ul>
                 <div class="clearfix"> </div>
             </div>
             <div class="top-header-right">
