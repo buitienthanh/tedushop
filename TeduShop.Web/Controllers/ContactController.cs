@@ -31,7 +31,7 @@ namespace TeduShop.Web.Controllers
         }
 
         [HttpPost]
-        [CaptchaValidation("CaptchaCode", "contactCaptcha", "Ma xac nhan ko dung")]
+        [CaptchaValidation("CaptchaCode", "contactCaptcha", "Mã xác nhận không đúng")]
         public ActionResult SendFeedback(FeedBackViewModel feedbackViewModel)
         {
             if (ModelState.IsValid)
