@@ -25,7 +25,7 @@ namespace TeduShop.Web.Controllers
             _pageService = pageService;
         }
 
-        [OutputCache(Duration = 3600,Location=System.Web.UI.OutputCacheLocation.Server)]
+        [OutputCache(Duration = 3600,Location=System.Web.UI.OutputCacheLocation.Client)]
         public ActionResult Index()
         {
             var slideModel = _commonService.GetSlides();
@@ -55,7 +55,7 @@ namespace TeduShop.Web.Controllers
         }
 
         [ChildActionOnly]
-        [OutputCache(Duration = 3600)]
+        //[OutputCache(Duration = 3600)]
         public ActionResult Header()
         {
             var pageModel = _pageService.GetAll();

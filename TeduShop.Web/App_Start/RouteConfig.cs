@@ -45,7 +45,7 @@ namespace TeduShop.Web
 
             routes.MapRoute(
                 name: "Login",
-                url: "dang-ngap.html",
+                url: "dang-nhap.html",
                 defaults: new { controller = "Account", action = "Login", id = UrlParameter.Optional },
                 namespaces: new string[] { "TeduShop.Web.Controllers" }
             );
