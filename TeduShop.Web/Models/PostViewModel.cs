@@ -43,6 +43,6 @@ namespace TeduShop.Web.Models
 
         public virtual PostCategoryViewModel PostCategory { set; get; }
 
-        public virtual IEnumerable<PostTagViewModel> PostTags { set; get; }
+        //public virtual IEnumerable<PostTagViewModel> PostTags { set; get; }
     }
 }

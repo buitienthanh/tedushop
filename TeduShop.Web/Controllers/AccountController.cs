@@ -1,17 +1,13 @@
 ﻿using BotDetect.Web.Mvc;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using TeduShop.Common;
-using TeduShop.Data;
 using TeduShop.Model.Models;
 using TeduShop.Web.App_Start;
 using TeduShop.Web.Models;
@@ -23,7 +19,6 @@ namespace TeduShop.Web.Controllers
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
-       
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
@@ -53,6 +48,7 @@ namespace TeduShop.Web.Controllers
                 _userManager = value;
             }
         }
+
         // GET: Account
         [HttpGet]
         public ActionResult Login(string returnUrl)
@@ -107,10 +103,10 @@ namespace TeduShop.Web.Controllers
                 var userByEmail = await _userManager.FindByEmailAsync(model.Email);
                 if (userByEmail != null)
                 {
-                    ModelState.AddModelError("email","Email đã tồn tại");
+                    ModelState.AddModelError("email", "Email đã tồn tại");
                     return View(model);
                 }
-                var userByUserName =await _userManager.FindByNameAsync(model.UserName);
+                var userByUserName = await _userManager.FindByNameAsync(model.UserName);
                 if (userByUserName != null)
                 {
                     ModelState.AddModelError("username", "Tài khoản đã tồn tại");
@@ -124,15 +120,14 @@ namespace TeduShop.Web.Controllers
                     EmailConfirmed = true,
                     BirthDay = DateTime.Now,
                     FullName = model.FullName,
-                    PhoneNumber=model.PhoneNumber,
-                    Address=model.Address
-
+                    PhoneNumber = model.PhoneNumber,
+                    Address = model.Address
                 };
 
                 await _userManager.CreateAsync(user, model.Password);
                 var adminUser = await _userManager.FindByEmailAsync(model.Email);
-                if(adminUser!=null)
-                    await _userManager.AddToRolesAsync(adminUser.Id, new string[] {"User" });
+                if (adminUser != null)
+                    await _userManager.AddToRolesAsync(adminUser.Id, new string[] { "User" });
                 ViewData["SuccessMsg"] = "Đăng ký thành công";
                 string content = System.IO.File.ReadAllText(Server.MapPath("/Assets/client/template/newuser.html"));
                 content = content.Replace("{{UserName}}", adminUser.UserName);
