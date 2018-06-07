@@ -16,6 +16,7 @@
     "ng-ckeditor": "~0.2.1",
     "jquery-ui": "~1.12.1",
     "mustache": "~2.2.1",
-    "numeral": "~2.0.6"
+    "numeral": "~2.0.6",
+    "jquery-validation": "~1.15.0"
   }
 }
